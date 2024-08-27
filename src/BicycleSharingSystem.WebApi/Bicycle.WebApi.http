@@ -1,0 +1,50 @@
+@BicycleSharingSystem.WebApi_HostAddress = http://localhost:5072
+
+
+###
+
+GET {{BicycleSharingSystem.WebApi_HostAddress}}/bicycle/7B71B58C-B32C-4020-A775-907670EE781E
+
+###
+
+POST {{BicycleSharingSystem.WebApi_HostAddress}}/bicycle
+Content-Type: application/json
+
+{
+  "bicycleId": "7B71B58C-B32C-4020-A775-907670EE781E",
+  "rentalOfficeName": "BMW"
+}
+
+###
+
+PUT {{BicycleSharingSystem.WebApi_HostAddress}}/bicycle/7B71B58C-B32C-4020-A775-907670EE781E
+Content-Type: application/json
+
+{
+  "bicycleId": "7B71B58C-B32C-4020-A775-907670EE781E",
+  "rentalOfficeName": "BMW",
+  "isRental": true
+}
+
+###
+
+PUT {{BicycleSharingSystem.WebApi_HostAddress}}/bicycle/7B71B58C-B32C-4020-A775-907670EE781E
+Content-Type: application/json
+
+{
+  "bicycleId": "7B71B58C-B32C-4020-A775-907670EE781E",
+  "rentalOfficeName": "BMW",
+  "isRental": false
+}
+
+###
+
+PUT {{BicycleSharingSystem.WebApi_HostAddress}}/user/rental/7B71B58C-B32C-4020-A775-907670EE781E
+
+###
+
+PUT {{BicycleSharingSystem.WebApi_HostAddress}}/user/return/7B71B58C-B32C-4020-A775-907670EE781E
+
+###
+
+DELETE {{BicycleSharingSystem.WebApi_HostAddress}}/bicycle/7B71B58C-B32C-4020-A775-907670EE781E
