@@ -1,0 +1,28 @@
+@BicycleSharingSystem.WebApi_HostAddress = http://localhost:5072
+
+
+###
+
+GET {{BicycleSharingSystem.WebApi_HostAddress}}/rentaloffice/BMW
+
+###
+
+POST {{BicycleSharingSystem.WebApi_HostAddress}}/rentaloffice
+Content-Type: application/json
+
+{
+  "name": "BMW"
+}
+
+###
+
+PUT {{BicycleSharingSystem.WebApi_HostAddress}}/rentaloffice
+Content-Type: application/json
+
+{
+  "name": "BMW"
+}
+
+###
+
+DELETE {{BicycleSharingSystem.WebApi_HostAddress}}/rentaloffice/BMW
