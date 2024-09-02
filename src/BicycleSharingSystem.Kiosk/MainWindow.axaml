@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BicycleSharingSystem.Kiosk.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        xmlns:views="clr-namespace:BicycleSharingSystem.Kiosk.Views"
+        mc:Ignorable="d" d:DesignWidth="540" d:DesignHeight="960"
+        x:Class="BicycleSharingSystem.Kiosk.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico" Background="#F9F9F9"
+        Title="BicycleSharingSystem.Kiosk">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <Grid RowDefinitions="27, *, 38">
+        <Grid ColumnDefinitions="95,*" Background="White">
+            <Grid Background="#202020">
+                <TextBlock Text="공지사항" Foreground="#D3D3D3"></TextBlock>
+            </Grid>
+            <Border Grid.Column="1" Padding="10, 0">
+                <TextBlock Text="BMW와 함께 안.라! " VerticalAlignment="Center"></TextBlock>
+            </Border>
+        </Grid>
+        <!-- <TransitioningContentControl Grid.Row="1"></TransitioningContentControl> -->
+        <!-- <views:HomeView Grid.Row="1"/> -->
+        <Border Padding="10 ,0" Grid.Row="2" Background="#202020">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Foreground="#D3D3D3" >
+                    <Run Text="{Binding Source={x:Static sys:DateTime.Now}, 
+                         StringFormat='{}{0:yyyy.MM.dd HH:mm}', Mode=OneWay}"/>
+                    <Run Text="날씨 OO / 미세먼지 OO"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="0" Grid.RowSpan="3" Background="White" Width="471" Height="71" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35, 819,0,0" CornerRadius="10"   BoxShadow="0 0 15 8 DarkGray" Padding="5">
+            
+        </Border>
+    </Grid>
+</Window>
