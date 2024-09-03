@@ -1,18 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BicycleSharingSystem.WebApi.Models;
 
 /// <summary>
 /// Rental Office Model.
 /// </summary>
-[PrimaryKey(nameof(Name))]
-[Table(nameof(RentalOfficeModel))]
 public sealed class RentalOfficeModel
 {
     /// <summary>
+    /// Office ID.
+    /// </summary>
+    [Key]
+    public required Guid OfficeId { get; init; } = Guid.NewGuid();
+
+    /// <summary>
     /// Rental Office Name.
     /// </summary>
+    [Required]
+    [MaxLength(100)]
     public required string Name { get; init; } = null!;
 }

@@ -15,6 +15,16 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
     /// <summary>
     /// HTTP GET
     /// </summary>
+    /// <returns>Rental office data</returns>
+    [HttpGet]
+    public IEnumerable<RentalOfficeModel> GetAll()
+    {
+        return context.RentalOffices;
+    }
+
+    /// <summary>
+    /// HTTP GET
+    /// </summary>
     /// <returns>Bicycle data</returns>
     [HttpGet("{name}")]
     public IEnumerable<BicycleModel> Get(string name)
