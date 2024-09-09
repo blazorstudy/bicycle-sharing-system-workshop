@@ -2,11 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace BicycleSharingSystem.Kiosk.Views;
+namespace BicycleSharingSystem.Kiosk.Pages.RentalOffice;
 
-public partial class HomeView : UserControl
+public partial class Index : UserControl
 {
-    public HomeView()
+    public Index()
     {
         InitializeComponent();
     }

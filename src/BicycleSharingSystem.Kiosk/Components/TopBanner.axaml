@@ -1,0 +1,26 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BicycleSharingSystem.Kiosk.Components">
+    <Design.PreviewWith>
+        <Grid RowDefinitions="27, *, 90, 38" Width="540" Background="#f5f5f5">
+            <controls:TopBanner />
+        </Grid>
+     
+    </Design.PreviewWith>
+
+    <Style Selector="controls|TopBanner">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="95,*" Background="White">
+                    <Grid Background="#202020">
+                        <TextBlock Text="공지사항" Foreground="#D3D3D3"></TextBlock>
+                    </Grid>
+                    <Border Grid.Column="1" Padding="10, 0">
+                        <TextBlock Text="BMW와 함께 안.라! " VerticalAlignment="Center"></TextBlock>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

@@ -1,0 +1,27 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <Design.PreviewWith>
+        <Grid RowDefinitions="27, *, 90, 38" Width="540" Background="#f5f5f5">
+            <controls:BottomBanner Grid.Row="3"/>
+        </Grid>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|BottomBanner">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="10 ,0" Grid.Row="2" Background="#202020">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Foreground="#D3D3D3" >
+                            <Run Text="{Binding Source={x:Static sys:DateTime.Now}, 
+                         StringFormat='{}{0:yyyy.MM.dd HH:mm}', Mode=OneWay}"/>
+                            <Run Text="날씨 OO / 미세먼지 OO"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
