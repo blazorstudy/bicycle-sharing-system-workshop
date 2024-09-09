@@ -1,0 +1,30 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BicycleSharingSystem.Kiosk.Components">
+    <StyleInclude Source="HomeButton.axaml"/>
+    <StyleInclude Source="RentalOfficeButton.axaml"/>
+    <StyleInclude Source="ServiceNoneButton.axaml"/>
+    <StyleInclude Source="../Styles/BaseStyle.axaml"/>
+    <Design.PreviewWith>
+        <Grid RowDefinitions="27, *, 90, 38" Width="540" Background="#f5f5f5">
+            <controls:NavigationBar Grid.Row="2" />
+        </Grid>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|NavigationBar">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="White" CornerRadius="10 10 0 0" Padding="5" BorderBrush="DarkGray" BorderThickness="1">
+                    <UniformGrid Columns="5">
+                        <controls:HomeButton Command="{Binding HomeButtonCommand}"/>
+                        <controls:RentalOfficeButton Command="{Binding RentalOfficeButtonCommand}"/>
+                        <controls:ServiceNoneButton />
+                        <controls:ServiceNoneButton />
+                        <controls:ServiceNoneButton />
+                    </UniformGrid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
