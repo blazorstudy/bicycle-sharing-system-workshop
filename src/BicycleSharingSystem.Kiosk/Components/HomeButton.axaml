@@ -2,9 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
         xmlns:i="https://github.com/projektanker/icons.avalonia">
-    <StyleInclude Source="../Styles/BaseStyle.axaml" />
+    <StyleInclude Source="NavigationButtonStyle.axaml" />
     <Design.PreviewWith>
-        <Grid Background="White" Width="77" Height="90">
+        <Grid Background="White" Width="90" Height="90">
             <controls:HomeButton />
         </Grid>
     </Design.PreviewWith>
@@ -14,9 +14,9 @@
         <!-- Set Defaults -->
         <Setter Property="Template">
             <ControlTemplate>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Background="{TemplateBinding Background}" Width="90">
+                <StackPanel>
                     <i:Icon Value="mdi-home"/>
-                    <TextBlock Text="처음화면" Classes="NavigationText"/>
+                    <TextBlock Text="처음화면"/>
                 </StackPanel>
             </ControlTemplate>
         </Setter>

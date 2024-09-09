@@ -1,17 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:i="https://github.com/projektanker/icons.avalonia">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <SolidColorBrush x:Key="ColorBlack" >#252525</SolidColorBrush>
     </Styles.Resources>
-    
-    <Style Selector="i|Icon">
-        <Setter Property="FontSize" Value="40"/>
-    </Style>
-    
-    <Style Selector="TextBlock.NavigationText">
-        <Setter Property="Foreground" Value="{StaticResource ColorBlack}"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontWeight" Value="Bold"></Setter>
-    </Style>
 </Styles>
