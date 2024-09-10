@@ -12,9 +12,10 @@ public class ViewLocator : IDataTemplate
     {
         if (data is null)
             return null;
-        
-        var name = data.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType(name);
+        var pathName = data.GetType().Namespace!.Replace("ViewModel", "Page");
+        var folderName = data.GetType().Name!.Replace("ViewModel", "");
+        // var name = data.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
+        var type = Type.GetType($"{pathName}.{folderName}.Index");
 
         if (type != null)
         {
@@ -23,7 +24,7 @@ public class ViewLocator : IDataTemplate
             return control;
         }
         
-        return new TextBlock { Text = "Not Found: " + name };
+        return new TextBlock { Text = "Not Found: " + $"{pathName}.{folderName}.index" };
     }
 
     public bool Match(object? data)
