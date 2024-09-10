@@ -2,11 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace BicycleSharingSystem.Kiosk.Views;
+namespace BicycleSharingSystem.Kiosk.Pages.Bike;
 
-public partial class BikeView : UserControl
+public partial class Index : UserControl
 {
-    public BikeView()
+    public Index()
     {
         InitializeComponent();
     }
