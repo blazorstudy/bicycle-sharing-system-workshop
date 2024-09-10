@@ -13,13 +13,10 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Padding="10 ,0" Grid.Row="2" Background="#202020">
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Foreground="#D3D3D3" >
-                            <Run Text="{Binding Source={x:Static sys:DateTime.Now}, 
-                         StringFormat='{}{0:yyyy.MM.dd HH:mm}', Mode=OneWay}"/>
-                            <Run Text="날씨 OO / 미세먼지 OO"/>
-                        </TextBlock>
-                    </StackPanel>
+                    <TextBlock Foreground="#D3D3D3" VerticalAlignment="Center">
+                        <Run Text="{Binding Source={x:Static sys:DateTime.Now}, 
+                     StringFormat='{}{0:yyyy.MM.dd HH:mm}', Mode=OneWay}"/>
+                    </TextBlock>
                 </Border>
             </ControlTemplate>
         </Setter>
