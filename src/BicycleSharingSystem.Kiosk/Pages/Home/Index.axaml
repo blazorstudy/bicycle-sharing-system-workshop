@@ -3,10 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="540" d:DesignHeight="895"
-             x:Class="BicycleSharingSystem.Kiosk.Views.BikeView">
-    <Border Padding="10, 50">
-        <StackPanel Spacing="10">
-            <TextBlock Text="OO 대여소"/>
-        </StackPanel>
-    </Border>
+             x:Class="BicycleSharingSystem.Kiosk.Pages.Home.Index">
+    <Image Source="avares://BicycleSharingSystem.Kiosk/Assets/BMW Logo.png"  Height="312" Width="312" ></Image>
 </UserControl>
