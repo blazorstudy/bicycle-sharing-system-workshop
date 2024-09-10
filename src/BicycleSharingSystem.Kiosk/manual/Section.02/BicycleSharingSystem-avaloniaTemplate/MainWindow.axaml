@@ -1,23 +1,22 @@
 <Window
-    Background="#F9F9F9"
     Height="960"
     Icon="/Assets/avalonia-logo.ico"
     MaxHeight="960"
     MaxWidth="540"
     MinHeight="960"
     MinWidth="540"
-    Title="BicycleSharingSystem.Kiosk"
+    Title="BicycleSharingSystemavaloniaTemplate"
     Width="540"
     d:DesignHeight="960"
     d:DesignWidth="540"
     mc:Ignorable="d"
-    x:Class="BicycleSharingSystem.Kiosk.MainWindow"
+    x:Class="BicycleSharingSystemavaloniaTemplate.MainWindow"
     x:DataType="vm:MainWindowViewModel"
     xmlns="https://github.com/avaloniaui"
-    xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
+    xmlns:components="clr-namespace:BicycleSharingSystemavaloniaTemplate.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:BicycleSharingSystem.Kiosk.ViewModels"
+    xmlns:vm="using:BicycleSharingSystemavaloniaTemplate.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.Styles>
         <StyleInclude Source="Components/TopBanner.axaml" />
@@ -25,16 +24,17 @@
         <StyleInclude Source="Components/BottomBanner.axaml" />
     </Window.Styles>
     <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
         <vm:MainWindowViewModel />
     </Design.DataContext>
+
     <Grid RowDefinitions="27, *, 90, 38">
         <components:TopBanner />
-        <TransitioningContentControl Content="{Binding CurrentPage}" Grid.Row="1">
-            <TransitioningContentControl.PageTransition>
-                <PageSlide Duration="0:00:00.500" Orientation="Vertical" />
-            </TransitioningContentControl.PageTransition>
-        </TransitioningContentControl>
         <components:NavigationBar Grid.Row="2" />
         <components:BottomBanner Grid.Row="3" />
     </Grid>
+
 </Window>
