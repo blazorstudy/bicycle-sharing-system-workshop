@@ -9,6 +9,9 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
+        <Folder Include="Pages\Bike\" />
+        <Folder Include="Pages\Home\" />
+        <Folder Include="Pages\RentalOffice\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,7 +21,7 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.3" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
         <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.4.0" />
         <PackageReference Include="Projektanker.Icons.Avalonia.MaterialDesign" Version="9.4.0" />
     </ItemGroup>
@@ -28,23 +31,5 @@
         <DependentUpon>MainWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Pages\Bike\Index.axaml.cs">
-        <DependentUpon>BikeView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Pages\Home\Index.axaml.cs">
-        <DependentUpon>HomeView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Pages\RentalOffice\Index.axaml.cs">
-        <DependentUpon>RentalOfficeView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Pages\Bike\Component\" />
-      <Folder Include="Pages\Home\Component\" />
-      <Folder Include="Pages\RentalOffice\Component\" />
     </ItemGroup>
 </Project>
