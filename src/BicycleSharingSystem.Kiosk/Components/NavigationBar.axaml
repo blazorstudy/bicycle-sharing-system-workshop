@@ -38,7 +38,7 @@
             <ControlTemplate>
                 <Border Background="White" CornerRadius="10 10 0 0" Padding="5" BorderBrush="DarkGray" BorderThickness="1">
                     <UniformGrid Columns="4">
-                        <Button Theme="{StaticResource NaviItem}" Tag="mdi-home" Content="처음화면" Command="{Binding HomeButtonCommand}" Classes="abc"/>
+                        <Button Theme="{StaticResource NaviItem}" Tag="mdi-home" Content="처음화면" Command="{Binding HomeButtonCommand}"/>
                         <Button Theme="{StaticResource NaviItem}" Tag="mdi-bike" Content="대여소" Command="{Binding RentalOfficeButtonCommand}"/>
                         <Button Theme="{StaticResource NaviItem}" Tag="mdi-wrench" Content="서비스 준비중"/>
                         <Button Theme="{StaticResource NaviItem}" Tag="mdi-wrench" Content="서비스 준비중"/>
