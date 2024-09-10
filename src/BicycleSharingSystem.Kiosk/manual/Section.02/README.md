@@ -32,3 +32,5 @@
  기존 -> Views/{화면이름}View.xaml
 
  변경 -> Pages/{화면이름}/Index.xaml 
+
+[이전으로](https://github.com/blazorstudy/bicycle-sharing-system-workshop/tree/main/src/BicycleSharingSystem.Kiosk/manual/Section.01)
