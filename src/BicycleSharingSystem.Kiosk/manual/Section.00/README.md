@@ -26,7 +26,7 @@
 
 2. 다운로드 받으 실 분
 
-> https://github.com/lukewire129/bicycle-sharing-system-workshop-avaloniaTemplate/releases/tag/1.0.0
+> 링크는 최종적으로~
 
 다운로드 받으신 분들은 폴더 누락 되어있을텐데 아래와 같이 추가 (VisualStudio는 해당 안됨)
 
