@@ -192,6 +192,12 @@ Command="{Binding RentalOfficeButtonCommand}"
     Tag="mdi-bike"
     Theme="{StaticResource NaviItem}" />
 ```
+8. 마우스 올렸을 때 색상 변하게 하기
+```csharp
+<Style Selector="^ /template/ Button:pointerover">
+    <Setter Property="Background" Value="#e6e6e6" />
+</Style>
+```
 ## Bottom Banner 만들기
 1. `Avalonia Template Control` 생성 BottomBanner
 2. PreivewWith 설정하기
@@ -205,7 +211,11 @@ Command="{Binding RentalOfficeButtonCommand}"
     </Grid>
 </Design.PreviewWith>
 ```
-3. 화면요소 추가
+3. xaml에서 실시간 시간 바인딩 시키기 위해 접두어 추가
+```csharp
+xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+```
+4. 화면요소 추가
 ```csharp
  <Style Selector="controls|BottomBanner">
     <Setter Property="Template">
