@@ -43,7 +43,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\" />
       <Folder Include="Pages\Bike\Component\" />
       <Folder Include="Pages\Home\Component\" />
       <Folder Include="Pages\RentalOffice\Component\" />
