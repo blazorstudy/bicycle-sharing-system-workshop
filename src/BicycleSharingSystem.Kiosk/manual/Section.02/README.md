@@ -33,4 +33,4 @@
 
  변경 -> Pages/{화면이름}/Index.xaml 
 
-[이전으로](https://github.com/blazorstudy/bicycle-sharing-system-workshop/tree/main/src/BicycleSharingSystem.Kiosk/manual/Section.01)
+[이전](https://github.com/blazorstudy/bicycle-sharing-system-workshop/tree/main/src/BicycleSharingSystem.Kiosk/manual/Section.01)
