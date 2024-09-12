@@ -16,7 +16,8 @@ public static class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddDbContext<BicycleSharingContext>();
+        builder.AddServiceDefaults();
+        builder.AddMySqlDbContext<BicycleSharingContext>("workshopdb");
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

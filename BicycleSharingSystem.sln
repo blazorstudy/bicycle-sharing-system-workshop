@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleSharingSystem.WebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleSharingSystem.Kiosk", "src\BicycleSharingSystem.Kiosk\BicycleSharingSystem.Kiosk.csproj", "{3C393554-B889-4CB2-95C7-84FA822B3558}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleSharingSystem.AppHost", "src\BicycleSharingSystem.AppHost\BicycleSharingSystem.AppHost.csproj", "{74954CA4-6A99-44A0-9403-C10B6DC55E80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BicycleSharingSystem.ServiceDefaults", "src\BicycleSharingSystem.ServiceDefaults\BicycleSharingSystem.ServiceDefaults.csproj", "{B44D2BAE-4831-4FFD-A47D-AADF8903E9A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3C393554-B889-4CB2-95C7-84FA822B3558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C393554-B889-4CB2-95C7-84FA822B3558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C393554-B889-4CB2-95C7-84FA822B3558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74954CA4-6A99-44A0-9403-C10B6DC55E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74954CA4-6A99-44A0-9403-C10B6DC55E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74954CA4-6A99-44A0-9403-C10B6DC55E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74954CA4-6A99-44A0-9403-C10B6DC55E80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44D2BAE-4831-4FFD-A47D-AADF8903E9A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44D2BAE-4831-4FFD-A47D-AADF8903E9A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44D2BAE-4831-4FFD-A47D-AADF8903E9A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44D2BAE-4831-4FFD-A47D-AADF8903E9A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
