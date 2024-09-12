@@ -17,13 +17,7 @@ public sealed class BicycleModel
     /// Rental Office Name.
     /// </summary>
     [Required]
-    [MaxLength(100)]
-    public required string RentalOfficeName { get; set; } = null!;
-
-    /// <summary>
-    /// Is Rental.
-    /// </summary>
-    public bool IsRental { get; set; }
+    public required Guid RentalOfficeId { get; set; }
 
     /// <summary>
     /// Rental Start DateTime.
@@ -34,4 +28,9 @@ public sealed class BicycleModel
     /// Expire Rental DateTime.
     /// </summary>
     public DateTime? ExpireRentalTime { get; set; }
+
+    /// <summary>
+    /// Is Rental.
+    /// </summary>
+    public bool IsRental => StartRentalTime.HasValue;
 }
