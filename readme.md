@@ -11,7 +11,7 @@
 - .NET Backend 개발
   - Aspire
   - Minimal API
-  - EF Core
+  - MySql - Running on container environment
 
 ### 다음에 해보는 걸로
 - Blaozr MAUI Hybrid

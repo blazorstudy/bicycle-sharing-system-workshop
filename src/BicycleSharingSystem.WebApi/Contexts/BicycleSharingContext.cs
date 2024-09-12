@@ -1,5 +1,4 @@
-﻿using BicycleSharingSystem.WebApi.Contexts.Bases;
-using BicycleSharingSystem.WebApi.Models;
+﻿using BicycleSharingSystem.WebApi.Models;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -8,18 +7,9 @@ namespace BicycleSharingSystem.WebApi.Contexts;
 /// <summary>
 /// Bicycle Sharing Context.
 /// </summary>
-public sealed class BicycleSharingContext : DatabaseContextBase
+public sealed class BicycleSharingContext(DbContextOptions<BicycleSharingContext> dbContextOptions)
+    : DbContext(dbContextOptions)
 {
-    private const string DbFileName = "bicycle_sharing.db";
-
-    /// <summary>
-    /// Initialize <see cref="BicycleSharingContext"/> Instance.
-    /// </summary>
-    public BicycleSharingContext() : base(DbFileName)
-    {
-        Database.EnsureCreated();
-    }
-
     /// <summary>
     /// Rental Offices
     /// </summary>
