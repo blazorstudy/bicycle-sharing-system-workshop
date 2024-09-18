@@ -20,7 +20,7 @@ sealed class Program
     {
         IconProvider.Current
             .Register<MaterialDesignIconProvider>();
-        
+
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
