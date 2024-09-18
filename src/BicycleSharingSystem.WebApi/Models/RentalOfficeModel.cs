@@ -11,10 +11,10 @@ public sealed class RentalOfficeModel
     /// Office ID.
     /// </summary>
     [Key]
-    public required Guid OfficeId { get; init; } = Guid.NewGuid();
+    public Guid OfficeId { get; init; } = Guid.NewGuid();
 
     /// <summary>
-    /// Rental Office Name.
+    /// 대여소 이름
     /// </summary>
     [Required]
     [MaxLength(100)]
