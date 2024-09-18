@@ -7,9 +7,15 @@ namespace BicycleSharingSystem.WebApi.Contexts;
 /// <summary>
 /// Bicycle Sharing Context.
 /// </summary>
-public sealed class BicycleSharingContext(DbContextOptions<BicycleSharingContext> dbContextOptions)
-    : DbContext(dbContextOptions)
+public sealed class BicycleSharingContext : DbContext
 {
+    public BicycleSharingContext(DbContextOptions<BicycleSharingContext> dbContextOptions)
+        : base(dbContextOptions)
+    {
+        Database.EnsureCreated();
+        Database.Migrate();
+    }
+
     /// <summary>
     /// Rental Offices
     /// </summary>

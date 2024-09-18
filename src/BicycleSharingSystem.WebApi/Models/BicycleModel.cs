@@ -11,26 +11,26 @@ public sealed class BicycleModel
     /// Bicycle ID.
     /// </summary>
     [Key]
-    public required Guid BicycleId { get; init; } = Guid.NewGuid();
+    public Guid BicycleId { get; init; } = Guid.NewGuid();
 
     /// <summary>
-    /// Rental Office Name.
+    /// 대여소 이름
     /// </summary>
     [Required]
     public required Guid RentalOfficeId { get; set; }
 
     /// <summary>
-    /// Rental Start DateTime.
+    /// 대여 시작일
     /// </summary>
     public DateTime? StartRentalTime { get; set; }
 
     /// <summary>
-    /// Expire Rental DateTime.
+    /// 반납 예정일 또는 마지막 반납일
     /// </summary>
     public DateTime? ExpireRentalTime { get; set; }
 
     /// <summary>
-    /// Is Rental.
+    /// 대여 중 여부
     /// </summary>
     public bool IsRental => StartRentalTime.HasValue;
 }

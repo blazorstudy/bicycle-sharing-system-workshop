@@ -27,36 +27,36 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
     /// </summary>
     /// <returns>Bicycle data</returns>
     [HttpGet("{name}")]
-    public IEnumerable<BicycleModel> Get(string name)
+    public object? Get(string name)
     {
         var rentalOffice = context.RentalOffices.FirstOrDefault(o => o.Name == name);
 
         if (rentalOffice == null)
         {
-            return [];
+            return default;
         }
 
-        return context.Bicycles.Where(x => x.RentalOfficeName == rentalOffice.Name);
+        return new
+        {
+            OfficeId = rentalOffice.OfficeId,
+            Name = rentalOffice.Name,
+            Bicycles = context.Bicycles.Where(x => x.RentalOfficeId == rentalOffice.OfficeId)
+        };
     }
 
     /// <summary>
     /// HTTP POST
     /// </summary>
-    /// <param name="rentalOffice">rentalOffice</param>
+    /// <param name="rentalOffices">rentalOffices</param>
     /// <returns>Result</returns>
     [HttpPost]
-    public async Task<IActionResult> Post(RentalOfficeModel rentalOffice)
+    public async Task<IActionResult> Post(IEnumerable<RentalOfficeModel> rentalOffices)
     {
-        if (context.RentalOffices.Any(o => o.Name == rentalOffice.Name))
-        {
-            return BadRequest($"\"{rentalOffice.Name}\" is already exist.");
-        }
+        context.RentalOffices.AddRange(rentalOffices);
 
-        context.RentalOffices.Add(rentalOffice);
+        var changes = await context.SaveChangesAsync().ConfigureAwait(false);
 
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+        return Ok(changes);
     }
 
     /// <summary>

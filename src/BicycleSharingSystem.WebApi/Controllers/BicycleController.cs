@@ -25,21 +25,16 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
     /// <summary>
     /// HTTP POST
     /// </summary>
-    /// <param name="bicycle">bicycle</param>
+    /// <param name="bicycles">bicycles</param>
     /// <returns>Result</returns>
     [HttpPost]
-    public async Task<IActionResult> Post(BicycleModel bicycle)
+    public async Task<IActionResult> Post(IEnumerable<BicycleModel> bicycles)
     {
-        if (context.Bicycles.Any(x => x.BicycleId == bicycle.BicycleId))
-        {
-            return BadRequest($"\"{bicycle.BicycleId}\" is already exist.");
-        }
+        context.Bicycles.AddRange(bicycles);
 
-        context.Bicycles.Add(bicycle);
+        var changes = await context.SaveChangesAsync().ConfigureAwait(false);
 
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+        return Ok(changes);
     }
 
     /// <summary>
@@ -58,8 +53,9 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
             return NotFound(bicycle);
         }
 
-        dbBicycle.IsRental = bicycle.IsRental;
-        dbBicycle.RentalOfficeName = bicycle.RentalOfficeName;
+        dbBicycle.StartRentalTime = bicycle.StartRentalTime;
+        dbBicycle.ExpireRentalTime = bicycle.ExpireRentalTime;
+        dbBicycle.RentalOfficeId = bicycle.RentalOfficeId;
 
         return await context.SaveChangesAsync().ConfigureAwait(false) > 0
             ? Accepted()
