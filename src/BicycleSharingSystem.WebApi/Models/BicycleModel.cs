@@ -20,7 +20,7 @@ public sealed class BicycleModel
     public required Guid RentalOfficeId { get; set; }
 
     /// <summary>
-    /// 대여소 이름
+    /// 자전거 이름
     /// </summary>
     [Required]
     [MaxLength(100)]
