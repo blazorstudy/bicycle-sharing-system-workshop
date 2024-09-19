@@ -40,6 +40,7 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
         {
             OfficeId = rentalOffice.OfficeId,
             Name = rentalOffice.Name,
+            Region = rentalOffice.Region,
             Bicycles = context.Bicycles.Where(x => x.RentalOfficeId == rentalOffice.OfficeId)
         };
     }

@@ -9,38 +9,6 @@ GET {{HostAddress}}/bicycle/{{TestBicycleId}} HTTP/1.1
 
 ###
 
-POST {{HostAddress}}/bicycle HTTP/1.1
-Content-Type: application/json
-
-{
-  "bicycleId": "a1580b11-ada3-4950-ab65-5d496c3fc110",
-  "rentalOfficeName": "BMW"
-}
-
-###
-
-PUT {{HostAddress}}/bicycle/{{TestBicycleId}} HTTP/1.1
-Content-Type: application/json
-
-{
-  "bicycleId": "a1580b11-ada3-4950-ab65-5d496c3fc110",
-  "rentalOfficeName": "BMW",
-  "isRental": true
-}
-
-###
-
-PUT {{HostAddress}}/bicycle/{{TestBicycleId}} HTTP/1.1
-Content-Type: application/json
-
-{
-  "bicycleId": "a1580b11-ada3-4950-ab65-5d496c3fc110",
-  "rentalOfficeName": "BMW",
-  "isRental": false
-}
-
-###
-
 PUT {{HostAddress}}/user/rental/{{TestBicycleId}} HTTP/1.1
 
 ###

@@ -9,103 +9,130 @@ Content-Type: application/json
 
 [
   {
-    "name": "BMW",
+    "name": "BMW 수서점",
+    "region": "서울시 강남구 수서동",
     "officeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72"
   },
   {
-    "name": "닷넷",
+    "name": "BMW 판교점",
+    "region": "경기도 성남시 판교동",
     "officeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
   },
   {
-    "name": "수서",
+    "name": "BMW 강남점",
+    "region": "서울시 강남구 역삼동",
     "officeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
-    "name": "부산",
+    "name": "BMW 용인점",
+    "region": "경기도 용인시 처인구",
     "officeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
   },
   {
-    "name": "광화문",
+    "name": "BMW 동탄점",
+    "region": "경기도 화성시 오산동",
     "officeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   }
 ]
 
 
 ### n개의 자전거 추가
-# * BMW 3대
-# * 닷넷 4대
-# * 수서 6대
-# * 부산 4대
-# * 광화문 5대
+# * 수서점 3대
+# * 판교점 4대
+# * 강남점 6대
+# * 용인점 4대
+# * 동탄점 5대
 
 POST {{HostAddress}}/bicycle HTTP/1.1
 Content-Type: application/json
 
 [
   {
+    "name": "수서 1호",
     "rentalOfficeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72"
   },
   {
+    "name": "수서 2호",
     "rentalOfficeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72"
   },
   {
+    "name": "수서 3호",
     "rentalOfficeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72"
   },
   {
+    "name": "판교 1호",
     "rentalOfficeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
   },
   {
+    "name": "판교 2호",
     "rentalOfficeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
   },
   {
+    "name": "판교 3호",
     "rentalOfficeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
   },
   {
+    "name": "판교 4호",
     "rentalOfficeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
   },
   {
+    "name": "강남 1호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "강남 2호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "강남 3호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "강남 4호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "강남 5호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "강남 6호",
     "rentalOfficeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
   },
   {
+    "name": "용인 1호",
     "rentalOfficeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
   },
   {
+    "name": "용인 2호",
     "rentalOfficeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
   },
   {
+    "name": "용인 3호",
     "rentalOfficeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
   },
   {
+    "name": "용인 4호",
     "rentalOfficeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
   },
   {
+    "name": "동탄 1호",
     "rentalOfficeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   },
   {
+    "name": "동탄 2호",
     "rentalOfficeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   },
   {
+    "name": "동탄 3호",
     "rentalOfficeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   },
   {
+    "name": "동탄 4호",
     "rentalOfficeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   },
   {
+    "name": "동탄 5호",
     "rentalOfficeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
   }
 ]
