@@ -19,4 +19,11 @@ public sealed class RentalOfficeModel
     [Required]
     [MaxLength(100)]
     public required string Name { get; init; } = null!;
+
+    /// <summary>
+    /// 대여소 지역(위치)
+    /// </summary>
+    [Required]
+    [MaxLength(100)]
+    public required string Region { get; init; } = null!;
 }

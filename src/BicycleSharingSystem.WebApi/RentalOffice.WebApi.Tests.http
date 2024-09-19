@@ -7,16 +7,7 @@ GET {{HostAddress}}/rentaloffice HTTP/1.1
 
 ###
 
-GET {{HostAddress}}/rentaloffice/BMW HTTP/1.1
-
-###
-
-POST {{HostAddress}}/rentaloffice HTTP/1.1
-Content-Type: application/json
-
-{
-  "name": "BMW"
-}
+GET {{HostAddress}}/rentaloffice/BMW%20%ed%8c%90%ea%b5%90%ec%a0%90 HTTP/1.1
 
 ###
 
@@ -24,9 +15,10 @@ PUT {{HostAddress}}/rentaloffice HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "BMW"
+  "name": "BMW 판교점",
+  "region": "경기도 오산시 부산동"
 }
 
 ###
 
-DELETE {{HostAddress}}/rentaloffice/BMW HTTP/1.1
+DELETE {{HostAddress}}/rentaloffice/BMW%20%ed%8c%90%ea%b5%90%ec%a0%90 HTTP/1.1

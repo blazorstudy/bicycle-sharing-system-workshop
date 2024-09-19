@@ -53,9 +53,9 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
             return NotFound(bicycle);
         }
 
-        dbBicycle.StartRentalTime = bicycle.StartRentalTime;
-        dbBicycle.ExpireRentalTime = bicycle.ExpireRentalTime;
-        dbBicycle.RentalOfficeId = bicycle.RentalOfficeId;
+
+        context.Bicycles.Remove(dbBicycle);
+        context.Bicycles.Add(bicycle);
 
         return await context.SaveChangesAsync().ConfigureAwait(false) > 0
             ? Accepted()
