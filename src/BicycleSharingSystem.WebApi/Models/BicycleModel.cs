@@ -20,6 +20,13 @@ public sealed class BicycleModel
     public required Guid RentalOfficeId { get; set; }
 
     /// <summary>
+    /// 대여소 이름
+    /// </summary>
+    [Required]
+    [MaxLength(100)]
+    public required string Name { get; set; } = null!;
+
+    /// <summary>
     /// 대여 시작일
     /// </summary>
     public DateTime? StartRentalTime { get; set; }
