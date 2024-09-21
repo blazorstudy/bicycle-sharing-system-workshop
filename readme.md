@@ -53,8 +53,34 @@
 | Avalonia | 키오스크 앱 | 현재 대여소의 자전거 목록 표시, 대여 처리, 반납시 금액 표시 |
 | MAUI | 사용자 앱 | 자전기 빌리기 및 반납, 반납 요청 알림 |
 
-### 사전 준비 사항
-[핸즈온 준비](./sessions/0.%20prerequisites/readme.md)
+### 레포지토리 내용
+sessions : 각 세션의 내용이 정리되어 있는 폴더입니다.   
+>0.prerequisites : 워크샵 사전 준비 내용이 정리된 폴더입니다.   
+
+>1.blazor : blazor 세션 폴더입니다.   
+>> complete : 세션이 끝나면 완성될 코드를 저장합니다.   
+>> start : 세션을 시작할 때 열 폴더를 저장합니다.   
+>> readme.md : 세션 진행 설명이 있으면 됩니다.   
+
+>2.backend and aspire : backend and aspire 세션 폴더입니다.   
+>> complete : 세션이 끝나면 완성될 코드를 저장합니다.   
+>> start : 세션을 시작할 때 열 폴더를 저장합니다.   
+>> readme.md : 세션 진행 설명이 있으면 됩니다.   
+
+>3.uno-platform : uno-platform 세션 폴더입니다.   
+>> complete : 세션이 끝나면 완성될 코드를 저장합니다.   
+>> start : 세션을 시작할 때 열 폴더를 저장합니다.   
+>> readme.md : 세션 진행 설명이 있으면 됩니다.   
+
+>4.avalonia : avalonia 세션 폴더입니다.   
+>> complete : 세션이 끝나면 완성될 코드를 저장합니다.   
+>> start : 세션을 시작할 때 열 폴더를 저장합니다.   
+>> readme.md : 세션 진행 설명이 있으면 됩니다.   
+
+>5.maui : maui 세션 폴더입니다.   
+>> complete : 세션이 끝나면 완성될 코드를 저장합니다.   
+>> start : 세션을 시작할 때 열 폴더를 저장합니다.   
+>> readme.md : 세션 진행 설명이 있으면 됩니다.   
 
 ### 컨텐츠 요구사항 > 각 세션 페이지로 이동
 
