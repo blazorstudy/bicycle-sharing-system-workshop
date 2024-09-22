@@ -30,11 +30,18 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
     [HttpPost]
     public async Task<IActionResult> Post(IEnumerable<BicycleModel> bicycles)
     {
-        context.Bicycles.AddRange(bicycles);
+        try
+        {
+            context.Bicycles.AddRange(bicycles);
 
-        var changes = await context.SaveChangesAsync().ConfigureAwait(false);
+            var changes = await context.SaveChangesAsync().ConfigureAwait(false);
 
-        return Ok(changes);
+            return Ok(changes);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 
     /// <summary>
@@ -53,13 +60,19 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
             return NotFound(bicycle);
         }
 
+        try
+        {
+            context.Bicycles.Remove(dbBicycle);
+            context.Bicycles.Add(bicycle);
 
-        context.Bicycles.Remove(dbBicycle);
-        context.Bicycles.Add(bicycle);
-
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+            return await context.SaveChangesAsync().ConfigureAwait(false) > 0
+                ? Accepted()
+                : StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 
     /// <summary>
@@ -77,10 +90,17 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
             return NotFound(id);
         }
 
-        context.Bicycles.Remove(dbBicycle);
+        try
+        {
+            context.Bicycles.Remove(dbBicycle);
 
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+            return await context.SaveChangesAsync().ConfigureAwait(false) > 0
+                ? Accepted()
+                : StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 }

@@ -41,6 +41,8 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
             OfficeId = rentalOffice.OfficeId,
             Name = rentalOffice.Name,
             Region = rentalOffice.Region,
+            Latitude= rentalOffice.Latitude,
+            Longitude = rentalOffice.Longitude,
             Bicycles = context.Bicycles.Where(x => x.RentalOfficeId == rentalOffice.OfficeId)
         };
     }
@@ -53,11 +55,18 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
     [HttpPost]
     public async Task<IActionResult> Post(IEnumerable<RentalOfficeModel> rentalOffices)
     {
-        context.RentalOffices.AddRange(rentalOffices);
+        try
+        {
+            context.RentalOffices.AddRange(rentalOffices);
 
-        var changes = await context.SaveChangesAsync().ConfigureAwait(false);
+            var changes = await context.SaveChangesAsync().ConfigureAwait(false);
 
-        return Ok(changes);
+            return Ok(changes);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 
     /// <summary>
@@ -76,12 +85,19 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
             return NotFound($"\"{name}\" cannot be found.");
         }
 
-        context.RentalOffices.Remove(rentalOffice);
-        context.RentalOffices.Add(updateRentalOffice);
+        try
+        {
+            context.RentalOffices.Remove(rentalOffice);
+            context.RentalOffices.Add(updateRentalOffice);
 
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+            return await context.SaveChangesAsync().ConfigureAwait(false) > 0
+                ? Accepted()
+                : StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 
     /// <summary>
@@ -99,10 +115,17 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
             return NotFound($"\"{name}\" cannot be found.");
         }
 
-        context.RentalOffices.Remove(previousOffice);
+        try
+        {
+            context.RentalOffices.Remove(previousOffice);
 
-        return await context.SaveChangesAsync().ConfigureAwait(false) > 0
-            ? Accepted()
-            : StatusCode(StatusCodes.Status500InternalServerError);
+            return await context.SaveChangesAsync().ConfigureAwait(false) > 0
+                ? Accepted()
+                : StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 }

@@ -11,27 +11,37 @@ Content-Type: application/json
   {
     "name": "BMW 수서점",
     "region": "서울시 강남구 수서동",
-    "officeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72"
+    "officeId": "AF307E7D-1F49-420A-BC3B-2DF62950BC72",
+    "latitude": 37.4878,
+    "longitude": 127.1019
   },
   {
     "name": "BMW 판교점",
     "region": "경기도 성남시 판교동",
-    "officeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5"
+    "officeId": "A44AD65C-4BEE-4D34-843C-A5877A50D4B5",
+    "latitude": 37.3943,
+    "longitude": 127.1107
   },
   {
     "name": "BMW 강남점",
     "region": "서울시 강남구 역삼동",
-    "officeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A"
+    "officeId": "E95382F3-F796-49E9-89E1-E6829BDAF05A",
+    "latitude": 37.5013,
+    "longitude": 127.0396
   },
   {
     "name": "BMW 용인점",
     "region": "경기도 용인시 처인구",
-    "officeId": "C972DDDF-2288-4D7D-8F19-2845D699B605"
+    "officeId": "C972DDDF-2288-4D7D-8F19-2845D699B605",
+    "latitude": 37.2393,
+    "longitude": 127.1775
   },
   {
     "name": "BMW 동탄점",
     "region": "경기도 화성시 오산동",
-    "officeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A"
+    "officeId": "235C85F2-3D94-4F12-A05A-85229DFDF55A",
+    "latitude": 37.1994,
+    "longitude": 127.0787
   }
 ]
 
