@@ -1,0 +1,28 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.Bicycle.Component"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StyleInclude Source="BicycleItem.axaml" />
+    <Design.PreviewWith>
+        <Grid Height="1000" Width="580">
+            <controls:BicyclePanel HorizontalAlignment="Center">
+                <controls:BicycleItem Margin="10" />
+                <controls:BicycleItem Margin="10" />
+                <controls:BicycleItem />
+            </controls:BicyclePanel>
+        </Grid>
+    </Design.PreviewWith>
+    <Style Selector="controls|BicyclePanel">
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <UniformGrid Columns="2" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <!--  Set Defaults  -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

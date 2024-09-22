@@ -1,0 +1,43 @@
+<Window
+    x:Class="BicycleSharingSystem.Kiosk.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:BicycleSharingSystem.Kiosk.ViewModels"
+    Title="BicycleSharingSystem.Kiosk"
+    Width="540"
+    Height="960"
+    MinWidth="540"
+    MinHeight="960"
+    MaxWidth="540"
+    MaxHeight="960"
+    d:DesignHeight="960"
+    d:DesignWidth="540"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="Components/TopBanner.axaml" />
+                <ResourceInclude Source="Components/NavigationBar.axaml" />
+                <ResourceInclude Source="Components/BottomBanner.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="27, *, 90, 38">
+        <components:TopBanner />
+        <components:NavigationBar Grid.Row="2" />
+        <components:BottomBanner Grid.Row="3" />
+    </Grid>
+</Window>

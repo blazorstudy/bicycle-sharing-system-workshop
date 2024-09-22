@@ -1,0 +1,73 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+    xmlns:i="https://github.com/projektanker/icons.avalonia">
+    <Design.PreviewWith>
+        <Grid
+            Width="540"
+            Background="#F9F9F9"
+            RowDefinitions="27, *, 90, 38">
+            <controls:NavigationBar Grid.Row="2" />
+        </Grid>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="NaviItem" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Width="90"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="5">
+                    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                        <i:Icon FontSize="40" Value="{TemplateBinding Tag}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource ColorBlack}"
+                            Text="{TemplateBinding Content}" />
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type controls:NavigationBar}" TargetType="controls:NavigationBar">
+        <!--  Set Defaults  -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Margin="0.6,0"
+                    Padding="5"
+                    Background="White"
+                    BorderBrush="DarkGray"
+                    BorderThickness="1"
+                    CornerRadius="10 10 0 0">
+                    <UniformGrid Columns="4">
+                        <Button
+                            Command="{Binding HomeButtonCommand}"
+                            Content="처음화면"
+                            Tag="mdi-home"
+                            Theme="{StaticResource NaviItem}" />
+                        <Button
+                            Command="{Binding RentalOfficeButtonCommand}"
+                            Content="대여소"
+                            Tag="mdi-bike"
+                            Theme="{StaticResource NaviItem}" />
+                        <Button
+                            Content="서비스 준비중"
+                            Tag="mdi-wrench"
+                            Theme="{StaticResource NaviItem}" />
+                        <Button
+                            Content="서비스 준비중"
+                            Tag="mdi-wrench"
+                            Theme="{StaticResource NaviItem}" />
+                    </UniformGrid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button:pointerover">
+            <Setter Property="Background" Value="#e6e6e6" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,24 @@
+<UserControl
+    d:DesignHeight="895"
+    d:DesignWidth="540"
+    mc:Ignorable="d"
+    x:Class="BicycleSharingSystem.Kiosk.Pages.Bicycle.Index"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Component"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <StyleInclude Source="Component/BicyclePanel.axaml" />
+    </UserControl.Styles>
+    <Border Padding="10,50">
+        <Grid RowDefinitions="Auto,50,*">
+            <TextBlock Text="{Binding RenterShopName}" />
+            <ScrollViewer Grid.Row="2">
+                <StackPanel>
+                    <component:BicyclePanel ItemsSource="{Binding Bicycles}" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
