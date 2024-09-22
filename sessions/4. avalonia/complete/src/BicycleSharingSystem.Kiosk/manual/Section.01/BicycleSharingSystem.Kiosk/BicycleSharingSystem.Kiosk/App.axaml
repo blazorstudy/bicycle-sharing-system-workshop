@@ -1,0 +1,21 @@
+<Application
+    x:Class="BicycleSharingSystem.Kiosk.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BicycleSharingSystem.Kiosk"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+    <Application.Resources>
+        <SolidColorBrush x:Key="ColorBlack">#252525</SolidColorBrush>
+        <SolidColorBrush x:Key="ColorRed">#fd5b5a</SolidColorBrush>
+        <SolidColorBrush x:Key="ColorWhite">#D3D3D3</SolidColorBrush>
+    </Application.Resources>
+</Application>

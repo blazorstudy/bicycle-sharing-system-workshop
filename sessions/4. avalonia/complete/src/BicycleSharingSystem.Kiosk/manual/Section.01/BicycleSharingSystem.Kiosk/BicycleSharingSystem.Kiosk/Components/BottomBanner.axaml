@@ -1,0 +1,29 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <Design.PreviewWith>
+        <Grid
+            Width="540"
+            Background="#F9F9F9"
+            RowDefinitions="27, *, 90, 38">
+            <controls:BottomBanner Grid.Row="3" />
+        </Grid>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type controls:BottomBanner}" TargetType="controls:BottomBanner">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Grid.Row="2"
+                    Padding="10,0"
+                    Background="{StaticResource ColorBlack}">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="{StaticResource ColorWhite}"
+                        Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:yyyy.MM.dd HH:mm}', Mode=OneWay}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
