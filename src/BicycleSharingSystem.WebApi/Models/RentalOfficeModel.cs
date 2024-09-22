@@ -26,4 +26,14 @@ public sealed class RentalOfficeModel
     [Required]
     [MaxLength(100)]
     public required string Region { get; init; } = null!;
+
+    /// <summary>
+    /// 위도 (Latitude)
+    /// </summary>
+    public double? Latitude { get; init; }
+
+    /// <summary>
+    /// 경도 (Longitude)
+    /// </summary>
+    public double? Longitude { get; init; }
 }
