@@ -26,4 +26,18 @@ VS CODE 설치 매뉴얼
 
 ## Avalonia를 위한 추가요소
 
+### Rider 진행 시 (맥 또는 윈도우)
+- Avalonia Template 설치
+- 플러그인(AvaloniaRider) 설치
+```csharp
+dotnet new install Avalonia.Templates
+```
+
+### VisualStudio 진행 시 (윈도우) 
+- 확장도구(Avalonia for Visual Studio 2022) 설치
+
+### BMW Bicycle Kiosk Project Template DownLoad
+```csharp
+dotnet new install BicycleSharingAvalonia.Template
+```
 ## MAUI를 위한 추가요소
