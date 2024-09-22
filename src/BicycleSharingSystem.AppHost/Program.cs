@@ -6,7 +6,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 var mysql = builder.AddMySql("mysql").AddDatabase("workshopdb");
 
 // Backend 설정
-builder.AddProject<BicycleSharingSystem_WebApi>("webApi")
+builder.AddProject<BicycleSharingSystem_WebApi>("webapi")
        .WithReference(mysql);
 
 // Aspire 시작!
