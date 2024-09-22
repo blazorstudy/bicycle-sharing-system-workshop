@@ -1,0 +1,80 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+    xmlns:i="https://github.com/projektanker/icons.avalonia">
+    <ControlTheme x:Key="NaviItem" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Width="90"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="5">
+                    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                        <i:Icon FontSize="40" Value="{TemplateBinding Tag}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource ColorBlack}"
+                            Text="{TemplateBinding Content}" />
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <Design.PreviewWith>
+        <Grid
+            Width="540"
+            Background="#F9F9F9"
+            RowDefinitions="27, *, 90, 38">
+            <controls:TopBanner />
+        </Grid>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type controls:TopBanner}" TargetType="controls:TopBanner">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="White" ColumnDefinitions="95,*">
+                    <Grid.Styles>
+                        <Style Selector="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="15" />
+                        </Style>
+                        <Style Selector="TextBlock.Message">
+                            <Style.Animations>
+                                <Animation
+                                    Delay="0:0:1"
+                                    IterationCount="INFINITE"
+                                    Duration="0:0:15">
+                                    <KeyFrame Cue="0%">
+                                        <Setter Property="TranslateTransform.X" Value="540" />
+                                    </KeyFrame>
+                                    <KeyFrame Cue="100%">
+                                        <Setter Property="TranslateTransform.X" Value="-540" />
+                                    </KeyFrame>
+                                </Animation>
+                            </Style.Animations>
+                        </Style>
+                    </Grid.Styles>
+                    <Border Grid.Column="1" Padding="10,0">
+                        <TextBlock Classes="Message" Text="BMW와 함께 하는 안전한 라이딩" />
+                    </Border>
+                    <Label
+                        Grid.Column="0"
+                        HorizontalContentAlignment="Center"
+                        Background="{StaticResource ColorBlack}">
+                        <Label.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="2">
+                                <i:Icon
+                                    FontSize="18"
+                                    Foreground="{StaticResource ColorWhite}"
+                                    Value="mdi-microphone" />
+                                <TextBlock Foreground="{StaticResource ColorWhite}" Text="공지사항" />
+                            </StackPanel>
+                        </Label.Content>
+                    </Label>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
