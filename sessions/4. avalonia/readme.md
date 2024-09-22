@@ -1,4 +1,6 @@
+![KakaoTalk_Recording_20240922_224546-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/b5d0f6f1-46ef-4fb7-a1b0-8bfd09b372dd)
 # 목차
+
 1. 컴포넌트 만들기
 2. 정렬 컨트롤 만들기
 3. 화면 조합하기
