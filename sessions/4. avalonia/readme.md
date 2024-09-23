@@ -581,7 +581,157 @@ xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
     <components:BottomBanner Grid.Row="3" />
 </Grid>
 ```
-5. ViewModel 코드들을 전부 다음과 같이 수정해줍니다.
+5. Queries 폴더 생성 후 `IBicycleQuery`, `IRentalOfficeQuery` 인터페이스 생성 및 아래 코드 복붙
+```csharp
+// /Queries/IBicycleQuery.cs
+namespace BicycleSharingSystem.Kiosk.Queries;
+// DTO 모델
+public sealed class BicycleDTO
+{
+    public string BicycleId { get; set; }
+    public string RentalOfficeId { get; set; }
+    public DateTime? StartRentalTime { get; set; }
+    public string Name { get; set; }
+    public DateTime? ExpireRentalTime { get; set; }
+    public bool IsRental => StartRentalTime.HasValue;
+}
+
+public interface IBicycleQuery
+{
+    Task<List<BicycleDTO>> Get(string RentalOfficeId);
+}
+
+// 실제 연결 데이터 
+public class BicycleQuery: IBicycleQuery
+{
+    public async Task<List<BicycleDTO>> Get(string RentalOfficeId)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+// 테스트 데이터 쿼리
+public class TestBicycleQuery :IBicycleQuery
+{
+    public async Task<List<BicycleDTO>> Get(string RentalOfficeId)
+    {
+        return new List<BicycleDTO>()
+        {
+            new BicycleDTO()
+            {
+                BicycleId = Guid.NewGuid().ToString(),
+                RentalOfficeId = RentalOfficeId,
+                Name="Bike 1호기"
+            },
+            new BicycleDTO()
+            {
+                BicycleId = Guid.NewGuid().ToString(),
+                RentalOfficeId = RentalOfficeId,
+                Name="Bike 2호기"
+            },
+            new BicycleDTO()
+            {
+                BicycleId = Guid.NewGuid().ToString(),
+                RentalOfficeId = RentalOfficeId,
+                Name="Bike 3호기",
+                StartRentalTime = DateTime.Now,
+                ExpireRentalTime = DateTime.Now.AddMinutes(5)
+            },
+        };
+    }
+}    
+```
+```csharp
+// /Queries/IRentalOfficeQuery.cs
+namespace BicycleSharingSystem.Kiosk.Queries;
+
+// DTO 모델
+public class RentalOfficeDTO
+{
+    public string OfficeId { get; set; }
+    public string Name { get; set; }
+    public string Region { get; set; } 
+}
+
+public interface IRentalOfficeQuery
+{
+    Task<List<RentalOfficeDTO>> Get();
+}
+
+// 실제 연결 데이터 
+public class RentalOfficeQuery : IRentalOfficeQuery
+{
+    public async Task<List<RentalOfficeDTO>> Get()
+    {
+        throw new NotImplementedException();
+    }
+}
+// 테스트 데이터 
+public class TestRentalOfficeQuery : IRentalOfficeQuery
+{
+    public async Task<List<RentalOfficeDTO>> Get()
+    {
+        return new List<RentalOfficeDTO>
+        {
+            new RentalOfficeDTO() {OfficeId = Guid.NewGuid().ToString(), Name = "한빛대여소1", Region = "서울"},
+            new RentalOfficeDTO() {OfficeId = Guid.NewGuid().ToString(), Name = "한빛대여소2", Region = "서울"},
+            new RentalOfficeDTO() {OfficeId = Guid.NewGuid().ToString(), Name = "한빛대여소3", Region = "서울"},
+            new RentalOfficeDTO() {OfficeId = Guid.NewGuid().ToString(), Name = "BMW대여소1", Region = "경기"},
+            new RentalOfficeDTO() {OfficeId = Guid.NewGuid().ToString(), Name = "BMW대여소2", Region = "경기"},
+        };
+    }
+}
+```
+6. Model 코드 생성 `BicycleModel` `RentalOfficeModel`
+```csharp
+// Pages/Bicycle/Models/BicycleModel.cs
+using BicycleSharingSystem.Kiosk.Queries;
+
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace BicycleSharingSystem.Kiosk.Pages.Bicycle.Models;
+
+public partial class BicycleModel : ObservableObject
+{
+    public string Name { get; set; }
+    public string StartRentalTime { get; set; }
+    public string RemainDateTime { get; set; }
+    [ObservableProperty] private bool isRental = false;
+
+    public BicycleModel(BicycleDTO dto)
+    {
+        this.Name = dto.Name;
+        this.IsRental = dto.IsRental;
+        if (this.IsRental)
+        {
+            this.StartRentalTime = dto.StartRentalTime.Value.ToString("HH:mm");
+            TimeSpan timeDiff = dto.ExpireRentalTime.Value - DateTime.Now;
+            this.RemainDateTime = $"{timeDiff.Minutes.ToString("D2")}:{timeDiff.Seconds.ToString("D2")}";
+        }
+    }
+}
+```
+```csharp
+// Pages/RentalOffice/Models/RentalOfficeModel.cs
+using BicycleSharingSystem.Kiosk.Queries;
+
+namespace BicycleSharingSystem.Kiosk.Pages.RentalOffice.Models;
+
+public class RentalOfficeModel
+{
+    public string Number { get; set; }
+    public string RegionName { get; set; }
+    public string Name { get; set; }
+
+    public RentalOfficeModel(RentalOfficeDTO dto)
+    {
+        Number = dto.OfficeId;
+        Name = dto.Name;
+        RegionName = dto.Region;
+    }
+}
+```
+7. ViewModel 코드들을 전부 다음과 같이 수정해줍니다.
 ```csharp
 // ViewMoelBase.cs
 public class ViewModelBase : ObservableObject
@@ -714,8 +864,26 @@ public partial class RentalOfficeViewModel: ViewModelBase
     }
 }
 ```
-6. 실행 고고
-7. 전환 애니메이션 넣어보기 - 코드 수정 (contentcontrol -> TransitioningContentControl 애니메이션 추가)
+8. MainWindowViewModel 의 파라미터가 변했으니... 수정해야할부분을..
+```csharp
+// App.axaml.cs
+public override void OnFrameworkInitializationCompleted()
+{
+    if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+    {
+        // Line below is needed to remove Avalonia data validation.
+        // Without this line you will get duplicate validations from both Avalonia and CT
+        BindingPlugins.DataValidators.RemoveAt(0);
+        desktop.MainWindow = new MainWindow
+        {
+            DataContext = new MainWindowViewModel(new TestRentalOfficeQuery(), new TestBicycleQuery()),
+        };
+    }
+
+    base.OnFrameworkInitializationCompleted();
+}
+```
+9.  전환 애니메이션 넣어보기 - 코드 수정 (contentcontrol -> TransitioningContentControl 애니메이션 추가)
 ```xml
 <TransitioningContentControl Content="{Binding CurrentPage}" Grid.Row="1">
     <TransitioningContentControl.PageTransition>
