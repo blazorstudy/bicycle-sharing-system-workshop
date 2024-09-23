@@ -1,0 +1,29 @@
+﻿@page "/timetable"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+<PageTitle>BMW Workshop 2024</PageTitle>
+
+<h3>오늘 워크샵 시간표</h3>
+
+<QuickGrid Items="sessions" >
+    <PropertyColumn Property="@( s => s.Time )" Format="HH:mm"  Sortable="true" />
+    <PropertyColumn Property="@( s => s.Subject )" Sortable="true" />
+    <PropertyColumn Property="@( s => s.Speaker )" Sortable="true" />
+</QuickGrid>
+
+@code {
+    private record Session(TimeOnly Time, string Subject, string Speaker);
+
+    private IQueryable<Session> sessions = new []
+    {
+        new Session(new TimeOnly(10, 0), "오프닝, 후원사 소개", "김진석, 유현아"),
+        new Session(new TimeOnly(10, 20), "Blazor", "김진석"),
+        new Session(new TimeOnly(11, 0), "Backend & Aspire", "박구삼"),
+        new Session(new TimeOnly(12, 0), "점심시간", ""),
+        new Session(new TimeOnly(12, 45), "Uno-Platform", "이재웅"),
+        new Session(new TimeOnly(14, 25), "Avalonia", "이광석"),
+        new Session(new TimeOnly(15, 35), "MAUI", "조장원"),
+        new Session(new TimeOnly(17, 10), "클로징, 경품추첨, 기념사진", "김진석, 조동수"),
+    }.AsQueryable();
+}
