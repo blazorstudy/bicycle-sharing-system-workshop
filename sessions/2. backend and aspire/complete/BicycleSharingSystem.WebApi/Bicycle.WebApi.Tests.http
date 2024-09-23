@@ -1,0 +1,32 @@
+# 로컬 디버깅용 호스트 주소
+@HostAddress = http://localhost:5072
+@TestBicycleId = f426b606-50aa-4ee3-8757-b9751abbeee4
+
+
+###
+
+GET {{HostAddress}}/bicycle/{{TestBicycleId}} HTTP/1.1
+
+###
+
+PUT {{HostAddress}}/user/rental/{{TestBicycleId}} HTTP/1.1
+
+###
+
+PUT {{HostAddress}}/user/return/{{TestBicycleId}} HTTP/1.1
+
+###
+
+DELETE {{HostAddress}}/bicycle/{{TestBicycleId}} HTTP/1.1
+
+###
+
+PUT {{HostAddress}}/user/rental/{{TestBicycleId}} HTTP/1.1
+
+###
+
+PUT {{HostAddress}}/user/rental/{{TestBicycleId}}/180 HTTP/1.1
+
+###
+
+PUT {{HostAddress}}/user/return/C972DDDF-2288-4D7D-8F19-2845D699B605/{{TestBicycleId}} HTTP/1.1
