@@ -1,6 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Component"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Background="#F9F9F9" Padding="30">
@@ -21,7 +21,7 @@
                     Height="100"
                     Padding="20"
                     Width="500">
-                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource ColorBlack}">
+                    <TextBlock Foreground="{StaticResource ColorBlack}" VerticalAlignment="Center">
                         <Run Text="{Binding RegionName}" />
                         <LineBreak />
                         <Run Text="{Binding Name}" />

@@ -5,7 +5,7 @@
     mc:Ignorable="d"
     x:Class="BicycleSharingSystem.Kiosk.Pages.RentalOffice.Index"
     xmlns="https://github.com/avaloniaui"
-    xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Component"
+    xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:BicycleSharingSystem.Kiosk.ViewModels"
@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="Component/RentalOfficePanel.axaml" />
+                <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

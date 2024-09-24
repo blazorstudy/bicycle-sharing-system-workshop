@@ -1,6 +1,6 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.Bicycle.Component"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Background="White" Padding="100">
@@ -31,7 +31,7 @@
                             HorizontalAlignment="Center"
                             Text="{Binding Name}"
                             VerticalAlignment="Center" />
-                        <TextBlock IsVisible="{Binding IsRental}" Foreground="{StaticResource ColorBlack}">
+                        <TextBlock Foreground="{StaticResource ColorBlack}" IsVisible="{Binding IsRental}">
                             <Run Text="대여시작시간 : " />
                             <Run Text="{Binding StartRentalTime}" />
                             <LineBreak />

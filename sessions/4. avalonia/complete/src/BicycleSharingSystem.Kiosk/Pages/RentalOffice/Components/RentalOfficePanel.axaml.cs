@@ -2,12 +2,12 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 
-namespace BicycleSharingSystem.Kiosk.Pages.Bicycle.Component;
+namespace BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components;
 
-public class BicyclePanel : ListBox
+public class RentalOfficePanel : ListBox
 {
     protected override Control CreateContainerForItemOverride(object? item, int index, object? recycleKey)
     {
-        return new BicycleItem();
+        return new RentalOfficeItem();
     }
 }
