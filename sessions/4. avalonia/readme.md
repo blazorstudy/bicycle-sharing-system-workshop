@@ -12,6 +12,7 @@
 BicycleSharingSystem.Kiosk
 ```
 
+
 # 컴포넌트 만들기
 
 ## TopBanner
@@ -312,12 +313,13 @@ public ICommand? Command
     set => SetValue(CommandProperty, value);
 }
 
-public RentalOfficeItem()
-{
-    this.Tapped += (s, e) =>
+    public RentalOfficeItem()
     {
+    this.Tapped += (s, e) =>
+        {
         this.Command?.Execute(this.DataContext);
-    };
+        };
+    }
 }
 ```
 5. Command와 ViewModel의 커맨드를 미리 설정 해놓습니다.
@@ -486,7 +488,6 @@ public class BicyclePanel : ListBox
  <UserControl.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/Bicycle/Components/BicyclePanel.axaml" />
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </UserControl.Resources>
@@ -494,13 +495,11 @@ public class BicyclePanel : ListBox
 
 <!--Styles로 만들어진 경우-->
 <UserControl.Styles>
-    <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/BicyclePanel.axaml" />
 </UserControl.Styles>
 ```
 
 3. 화면 요소들을 삽입합니다.
 ```xml
-xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
 .
 .
 .
@@ -523,7 +522,6 @@ xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Componen
  <UserControl.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </UserControl.Resources>
@@ -531,12 +529,10 @@ xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Componen
 
 <!--Styles로 만들어진 경우-->
 <UserControl.Styles>
-    <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
 </UserControl.Styles>
 ```
 3. 화면 요소들을 삽입합니다.
 ```xml
-xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
 .
 .
 .
@@ -577,18 +573,12 @@ xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/TopBanner.axaml" />
-                <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/NavigationBar.axaml" />
-                <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/BottomBanner.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 --------------------------------------------------------------------------------------
    <!--Styles로 만들어진 경우-->
    <Window.Styles>
-       <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Components/TopBanner.axaml" />
-       <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Components/NavigationBar.axaml" />
-       <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Components/BottomBanner.axaml" />
    </Window.Styles>
 ```
 
@@ -702,7 +692,6 @@ public class TestRentalOfficeQuery : IRentalOfficeQuery
     }
 }
 ```
-6. Models 폴더 생성 후 코드 생성 `BicycleModel` `RentalOfficeModel`
 ```csharp
 // Pages/Bicycle/Models/BicycleModel.cs
 using BicycleSharingSystem.Kiosk.Queries;
@@ -751,16 +740,6 @@ public class RentalOfficeModel
     }
 }
 ```
-7. 화면전환용(대여소 -> 바이크) 메신저 모델을 생성합니다. 
-```csharp
-public class SelectRentalOfficeChangeMessage : ValueChangedMessage<RentalOfficeModel>
-{
-    public SelectRentalOfficeChangeMessage(RentalOfficeModel user) : base(user)
-    {        
-    }
-}
-```
-8. ViewModel 코드들을 전부 다음과 같이 수정해줍니다.
 ```csharp
 // ViewMoelBase.cs
 public class ViewModelBase : ObservableObject
@@ -893,7 +872,6 @@ public partial class RentalOfficeViewModel: ViewModelBase
     }
 }
 ```
-9. MainWindowViewModel 의 파라미터가 변했으니... 수정해야할부분을..
 ```csharp
 // App.axaml.cs
 public override void OnFrameworkInitializationCompleted()
@@ -912,23 +890,6 @@ public override void OnFrameworkInitializationCompleted()
     base.OnFrameworkInitializationCompleted();
 }
 ```
-10. 대여소 화면의 View의 비하인드 수정
-```csharp
-// BicycleSharingSystem.Kiosk.Pages.RentalOffice/Index.axaml.cs
-public partial class Index : UserControl
-{
-    public Index()
-    {
-        InitializeComponent();
-        this.Loaded += (s, e) =>
-        {
-            ((ViewModelBase)this.DataContext).Load();
-        };
-    }
-}
-```
-11. 빌드해서 실행해봅니다.
-12. 전환 애니메이션 넣어보기 - 코드 수정 (contentcontrol -> TransitioningContentControl 애니메이션 추가)
 ```xml
 <TransitioningContentControl Content="{Binding CurrentPage}" Grid.Row="1">
     <TransitioningContentControl.PageTransition>
@@ -941,4 +902,3 @@ public partial class Index : UserControl
 
 
 TODO : 
-1. 실제 API 서버 붙이기

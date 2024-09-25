@@ -10,13 +10,6 @@ namespace BicycleSharingSystem.WebApi.Contexts;
 public sealed class BicycleSharingContext(DbContextOptions<BicycleSharingContext> dbContextOptions)
     : DbContext(dbContextOptions)
 {
-    public BicycleSharingContext(DbContextOptions<BicycleSharingContext> dbContextOptions)
-        : base(dbContextOptions)
-    {
-        Database.EnsureCreated();
-        Database.Migrate();
-    }
-
     /// <summary>
     /// Rental Offices
     /// </summary>

@@ -1,0 +1,45 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<div style="display: flex">
+    <div class="card" style="width: 30rem;">
+        <img class="card-img-top" src="/images/workshop.png">
+        <div class="card-body">
+            <h5 class="card-title">오늘 워크샵</h5>
+            <p class="card-text">살짝 시간적으로 타이트합니다. 파... 파이팅!!!</p>
+            <button class="btn btn-primary" @onclick="clickGoal">오늘 목표!!!</button>
+        </div>
+    </div>
+
+    @if( isDisplay == true )
+    {
+        <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <h5 class="card-title">오늘 의 목표</h5>
+                <p class="card-text">
+                    <h5>.NET으로 할수 있는 다양한 개발 방법을 체험해 보자</h5>
+                    <ul>
+                        <li>Blazor</li>
+                        <li>Backend and Aspire</li>
+                        <li>Uno-Platform</li>
+                        <li>Avalonia</li>
+                        <li>MAUI</li>
+                    </ul>
+                    <h5>오늘은 맛보기만 해도 충분해요!</h5>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+@code 
+{
+    private bool isDisplay = false;
+    private void clickGoal()
+    {
+        isDisplay = !isDisplay;
+        Console.WriteLine($"오늘 워크샵 목표를 클릭했습니다.[{isDisplay}]");
+    }
+}
