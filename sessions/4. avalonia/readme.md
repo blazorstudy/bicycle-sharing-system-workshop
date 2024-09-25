@@ -306,19 +306,19 @@ xmlns:sys="clr-namespace:System;assembly=System.Runtime"
 public static readonly AvaloniaProperty CommandProperty =
         AvaloniaProperty.Register<RentalOfficeItem, ICommand?>(nameof(Command));
 
-    public ICommand? Command
-    {
-        get => (ICommand?)GetValue(CommandProperty);
-        set => SetValue(CommandProperty, value);
-    }
+public ICommand? Command
+{
+    get => (ICommand?)GetValue(CommandProperty);
+    set => SetValue(CommandProperty, value);
+}
 
-    public RentalOfficeItem()
+public RentalOfficeItem()
+{
+    this.Tapped += (s, e) =>
     {
-        this.Tapped += (s, e) =>
-        {
-            this.Command?.Execute(this.DataContext);
-        };
-    }
+        this.Command?.Execute(this.DataContext);
+    };
+}
 ```
 5. Command와 ViewModel의 커맨드를 미리 설정 해놓습니다.
 ```xml
