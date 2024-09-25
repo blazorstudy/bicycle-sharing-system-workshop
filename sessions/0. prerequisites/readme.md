@@ -55,3 +55,6 @@ dotnet new install Avalonia.Templates
 dotnet new install BicycleSharingAvalonia.Template
 ```
 ## MAUI를 위한 추가요소
+>- [ngrok Client]([https://marketplace.visualstudio.com/items?itemName=humao.rest-client](https://ngrok.com/download))
+>>- 해당 페이지에서 회원가입과 각 플랫폼(주로 윈도우)에 맞는 클라이언트를 설치해주시면 localhost 상태의 API와 에뮬레이터를 연결 시킬 수 있습니다
+
