@@ -1,0 +1,29 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="RentalOfficeItem.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Design.PreviewWith>
+        <controls:RentalOfficePanel>
+            <controls:RentalOfficeItem />
+            <controls:RentalOfficeItem />
+            <controls:RentalOfficeItem />
+        </controls:RentalOfficePanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="{x:Type controls:RentalOfficePanel}" x:Key="{x:Type controls:RentalOfficePanel}">
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" Spacing="10" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <!--  Set Defaults  -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

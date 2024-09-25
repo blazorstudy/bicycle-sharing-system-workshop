@@ -11,6 +11,8 @@
 >![apsnetcore](./images/aspnetcore.jpg)   
 >![maui](./images/maui.jpg)
 
+### Visual Studio Code
+VS CODE 설치 매뉴얼
 
 ### macOS
 -[.NET 8.0 SDK](https://dotnet.microsoft.com/ko-kr/download)
@@ -23,6 +25,7 @@
 
 VS CODE 확장 설치
 - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+- [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 ## Blazor를 위한 추가요소
 - 없음
