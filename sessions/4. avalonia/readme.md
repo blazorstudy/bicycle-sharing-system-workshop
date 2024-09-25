@@ -303,16 +303,22 @@ xmlns:sys="clr-namespace:System;assembly=System.Runtime"
 4. Click 시 Button Command 를 발생시키기 위해 다음과 같이 수정합니다.
 ```csharp
 // RentalOfficeItem.xaml.cs
-public class RentalOfficeItem : Button
-{
+public static readonly AvaloniaProperty CommandProperty =
+        AvaloniaProperty.Register<RentalOfficeItem, ICommand?>(nameof(Command));
+
+    public ICommand? Command
+    {
+        get => (ICommand?)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
+
     public RentalOfficeItem()
     {
-        this.Click += (s, e) =>
+        this.Tapped += (s, e) =>
         {
-            this.Command.Execute(this.DataContext);
+            this.Command?.Execute(this.DataContext);
         };
     }
-}
 ```
 5. Command와 ViewModel의 커맨드를 미리 설정 해놓습니다.
 ```xml
@@ -488,13 +494,13 @@ public class BicyclePanel : ListBox
 
 <!--Styles로 만들어진 경우-->
 <UserControl.Styles>
-    <StyleInclude Source="Component/BicyclePanel.axaml" />
+    <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/BicyclePanel.axaml" />
 </UserControl.Styles>
 ```
 
 3. 화면 요소들을 삽입합니다.
 ```xml
-xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Component"
+xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
 .
 .
 .
@@ -525,7 +531,7 @@ xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Componen
 
 <!--Styles로 만들어진 경우-->
 <UserControl.Styles>
-    <StyleInclude Source="Component/RentalOfficePanel.axaml" />
+    <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
 </UserControl.Styles>
 ```
 3. 화면 요소들을 삽입합니다.
