@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BicycleSharingSystem.WebApi.Models;
 
@@ -11,7 +12,8 @@ public sealed class BicycleModel
     /// Bicycle ID.
     /// </summary>
     [Key]
-    public Guid BicycleId { get; init; } = Guid.NewGuid();
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid BicycleId { get; init; }
 
     /// <summary>
     /// 대여소 이름

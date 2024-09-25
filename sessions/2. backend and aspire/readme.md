@@ -152,7 +152,8 @@
     public sealed class BicycleModel
     {
         [Key]
-        public Guid BicycleId { get; init; } = Guid.NewGuid();
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid BicycleId { get; init; }
 
         [Required]
         public required Guid RentalOfficeId { get; set; }
@@ -180,7 +181,8 @@
     public sealed class RentalOfficeModel
     {
         [Key]
-        public Guid OfficeId { get; init; } = Guid.NewGuid();
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid OfficeId { get; init; }
 
         [Required]
         [MaxLength(100)]

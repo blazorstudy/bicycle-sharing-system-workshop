@@ -112,7 +112,7 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
 
         if (previousOffice is null)
         {
-            return NotFound($"\"{name}\" cannot be found.");
+            return NotFound($"\"{id}\" cannot be found.");
         }
 
         try

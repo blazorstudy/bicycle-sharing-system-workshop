@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BicycleSharingSystem.WebApi.Models;
 
@@ -11,7 +12,8 @@ public sealed class RentalOfficeModel
     /// Office ID.
     /// </summary>
     [Key]
-    public Guid OfficeId { get; init; } = Guid.NewGuid();
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid OfficeId { get; init; }
 
     /// <summary>
     /// 대여소 이름
