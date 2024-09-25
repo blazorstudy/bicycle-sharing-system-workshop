@@ -373,14 +373,14 @@
             }
         }
 
-        [HttpPut("{name}")]
-        public async Task<IActionResult> Put(string name, RentalOfficeModel updateRentalOffice)
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Put(Guid id, RentalOfficeModel updateRentalOffice)
         {
-            var rentalOffice = context.RentalOffices.FirstOrDefault(o => o.Name == name);
+            var rentalOffice = context.RentalOffices.FirstOrDefault(o => o.OfficeId == id);
 
             if (rentalOffice is null)
             {
-                return NotFound($"\"{name}\" cannot be found.");
+                return NotFound($"\"{id}\" cannot be found.");
             }
 
             try
@@ -398,14 +398,14 @@
             }
         }
 
-        [HttpDelete("{name}")]
-        public async Task<IActionResult> Delete(string name)
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var previousOffice = context.RentalOffices.FirstOrDefault(o => o.Name == name);
+            var previousOffice = context.RentalOffices.FirstOrDefault(o => o.OfficeId == id);
 
             if (previousOffice is null)
             {
-                return NotFound($"\"{name}\" cannot be found.");
+                return NotFound($"\"{id}\" cannot be found.");
             }
 
             try
@@ -454,7 +454,7 @@
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Put(Guid id, BicycleModel bicycle)
         {
-            var dbBicycle = context.Bicycles.FirstOrDefault(x => x.BicycleId == bicycle.BicycleId);
+            var dbBicycle = context.Bicycles.FirstOrDefault(x => x.BicycleId == id);
 
             if (dbBicycle is null)
             {

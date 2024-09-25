@@ -72,17 +72,17 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
     /// <summary>
     /// HTTP PUT
     /// </summary>
-    /// <param name="name">name</param>
+    /// <param name="id">id</param>
     /// <param name="updateRentalOffice">updateRentalOffice</param>
     /// <returns>Result</returns>
-    [HttpPut("{name}")]
-    public async Task<IActionResult> Put(string name, RentalOfficeModel updateRentalOffice)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Put(Guid id, RentalOfficeModel updateRentalOffice)
     {
-        var rentalOffice = context.RentalOffices.FirstOrDefault(o => o.Name == name);
+        var rentalOffice = context.RentalOffices.FirstOrDefault(o => o.OfficeId == id);
 
         if (rentalOffice is null)
         {
-            return NotFound($"\"{name}\" cannot be found.");
+            return NotFound($"\"{id}\" cannot be found.");
         }
 
         try
@@ -103,12 +103,12 @@ public sealed class RentalOfficeController(BicycleSharingContext context) : Cont
     /// <summary>
     /// HTTP DELETE
     /// </summary>
-    /// <param name="name">name</param>
+    /// <param name="id">id</param>
     /// <returns>Result</returns>
-    [HttpDelete("{name}")]
-    public async Task<IActionResult> Delete(string name)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
     {
-        var previousOffice = context.RentalOffices.FirstOrDefault(o => o.Name == name);
+        var previousOffice = context.RentalOffices.FirstOrDefault(o => o.OfficeId == id);
 
         if (previousOffice is null)
         {

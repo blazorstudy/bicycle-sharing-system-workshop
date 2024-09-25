@@ -53,7 +53,7 @@ public sealed class BicycleController(BicycleSharingContext context) : Controlle
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Put(Guid id, BicycleModel bicycle)
     {
-        var dbBicycle = context.Bicycles.FirstOrDefault(x => x.BicycleId == bicycle.BicycleId);
+        var dbBicycle = context.Bicycles.FirstOrDefault(x => x.BicycleId == id);
 
         if (dbBicycle is null)
         {
