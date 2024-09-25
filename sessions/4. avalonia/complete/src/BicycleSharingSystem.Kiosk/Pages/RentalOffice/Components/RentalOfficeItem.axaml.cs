@@ -12,7 +12,7 @@ public class RentalOfficeItem : TemplatedControl
     public static readonly AvaloniaProperty CommandProperty =
         AvaloniaProperty.Register<RentalOfficeItem, ICommand?>(nameof(Command));
 
-    public ICommand? Command
+    public ICommand? Command 
     {
         get => (ICommand?)GetValue(CommandProperty);
         set => SetValue(CommandProperty, value);
