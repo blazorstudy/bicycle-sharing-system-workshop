@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:units="using:BicycleSharingSystem.Support.UI.Units"
+  xmlns:views="using:BicycleSharingSystem.Navigate.UI.Views">
+
+  <Style TargetType="views:MenuContent">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="views:MenuContent">
+          <Border BorderBrush="#DFDFDF" BorderThickness="0 0 1 0">
+            <StackPanel Margin="10">
+              <units:BicycleRadioButton IsChecked="{Binding IsRentalSelected}" Command="{Binding NavigateCommand}" CommandParameter="Rental" IconType="Rental"/>
+              <units:BicycleRadioButton IsChecked="{Binding IsBicycleSelected}" Command="{Binding NavigateCommand}" CommandParameter="Bicycle" IconType="Bicycle"/>
+            </StackPanel>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

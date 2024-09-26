@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:james="using:Jamesnet.Uno"
+  xmlns:views="using:BicycleSharingSystem.Main.UI.Views">
+
+  <Style TargetType="views:MainContent">
+    <Setter Property="Background" Value="#EBEBEB"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="views:MainContent">
+          <Grid Background="{TemplateBinding Background}">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <james:UnoLayer Grid.Column="0" LayerName="MenuLayer"/>
+            <james:UnoLayer Grid.Column="1" LayerName="ContentLayer"/>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>
