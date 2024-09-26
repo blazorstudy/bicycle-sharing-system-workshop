@@ -40,6 +40,7 @@ VS CODE 확장 설치
 ```
 dotnet new install Uno.ProjectTemplates.Dotnet
 ```
+[README.MD](https://github.com/blazorstudy/bicycle-sharing-system-workshop/tree/main/sessions/3.%20uno-platform)
 ## Avalonia를 위한 추가요소
 
 ### Rider 진행 시 (맥 또는 윈도우)
