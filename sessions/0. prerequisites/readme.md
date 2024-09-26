@@ -37,7 +37,9 @@ VS CODE 확장 설치
 >>- 설치가 어려우면 준비된 Azure 클라우드를 이용하여 워크샵을 진행하실 수 있습니다.
 
 ## Uno-Platform를 위한 추가요소
-
+```
+dotnet new install Uno.ProjectTemplates.Dotnet
+```
 ## Avalonia를 위한 추가요소
 
 ### Rider 진행 시 (맥 또는 윈도우)
