@@ -35,8 +35,8 @@ BicycleSharingSystem
 
 _적용된 프로젝트 예시_
 - [x] [leagueoflegends-wpf](https://GitHub.com/jamesnetgroup/leagueoflegends-wpf)
-- [x] [leagueoflegends-uno](https://GitHub.com/jamesnetgroup/leagueoflegends-wpf
-- [x] [leagueoflegends-winui3]((https://GitHub.com/jamesnetgroup/leagueoflegends-winui3)
+- [x] [leagueoflegends-uno](https://GitHub.com/jamesnetgroup/leagueoflegends-wpf)
+- [x] [leagueoflegends-winui3](https://GitHub.com/jamesnetgroup/leagueoflegends-winui3)
 
 플랫폼 간의 프레임워크 기술을 공유하는 것은 WPF, WinUI3와 같은 특정 운영체제에 종속적인 기술 환경에서 벗어나 크로스플랫폼 전환을 위한 좋은 기반이 됩니다.
 
