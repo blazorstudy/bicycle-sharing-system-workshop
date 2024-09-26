@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleSharingSystem.MAUI.Pages.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:BicycleSharingSystem.MAUI.ViewModels"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource CustomAppBackgroundColor}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <Style TargetType="Button" x:Key="BottomTabButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="{StaticResource Gray400}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="0,10"/>            
+        </Style>        
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*, Auto" BackgroundColor="{StaticResource CustomAppBackgroundColor}">
+        <!-- 상단 영역 (네비게이션 변경 부분) -->
+        <ContentView Grid.Row="0" Content="{Binding CurrentPage}">
+            <!-- 현재 선택된 페이지 내용이 여기에 교체됩니다 -->            
+        </ContentView>
+        <!-- 하단 탭바 영역 -->
+        <Border Grid.Row="1" Padding="10,10" BackgroundColor="#181818" StrokeThickness="0" Margin="20,10,20,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+                <Button Text="탐색" Command="{Binding changeTabCommand}" CommandParameter="0" Grid.Column="0" Style="{StaticResource BottomTabButtonStyle}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding CurrentTabIdx}" Value="0">
+                            <Setter Property="TextColor" Value="{StaticResource CustomPrimaryColor}"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="대여현황" Command="{Binding changeTabCommand}" CommandParameter="1"  Grid.Column="1" Style="{StaticResource BottomTabButtonStyle}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding CurrentTabIdx}" Value="1">
+                            <Setter Property="TextColor" Value="{StaticResource CustomPrimaryColor}"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

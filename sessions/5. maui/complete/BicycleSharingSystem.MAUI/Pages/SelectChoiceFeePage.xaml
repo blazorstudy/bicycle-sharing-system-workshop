@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleSharingSystem.MAUI.Pages.SelectChoiceFeePage"
+             xmlns:converter="clr-namespace:BicycleSharingSystem.MAUI.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"             
+             xmlns:vm="clr-namespace:BicycleSharingSystem.MAUI.ViewModels"
+             xmlns:model="clr-namespace:BicycleSharingSystem.MAUI.Models"
+             Shell.NavBarIsVisible="False" BackgroundColor="{StaticResource CustomAppBackgroundColor}"
+             Title="SelectChoiceFeePage">
+    <ContentPage.BindingContext>
+        <vm:SelectChoiceFeePageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converter:SelectItemBorderColorConverter x:Key="SelectItemBorderColorConverter"/>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="20"  x:Name="root">
+        <Label Text="요금제 선택" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding PricingPlans}" SelectedItem="{Binding SelectedPlanModel}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="White" StrokeThickness="4" Padding="18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.SelectedPlanChangeCommand, Source={x:Reference root}}" CommandParameter="{Binding .}"/>
+                        </Border.GestureRecognizers>
+                        <Border.Stroke>
+                            <MultiBinding Converter="{StaticResource SelectItemBorderColorConverter}">
+                                <Binding Path="." />
+                                <Binding Path="BindingContext.SelectedPlanModel" Source="{x:Reference root}" />
+                            </MultiBinding>
+                        </Border.Stroke>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout x:DataType="model:PricingPlanModel">
+                            <Label Text="{Binding planTitle}" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding description}" TextColor="{StaticResource Gray500}" FontSize="14"/>
+                            <Label Text="{Binding BindingContext.MostPopluarText, Source={x:Reference root}}" TextColor="{StaticResource CustomPrimaryColor}" IsVisible="{Binding isMostPopular}" FontSize="12" Margin="0,5,0,0" FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+                    </Border>                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="20">
+            <Button Text="취소" Padding="20" BackgroundColor="{StaticResource Gray600}" Command="{Binding BackPageCommand}"/>
+            <Button Text="선택" Padding="20" Grid.Column="1" BackgroundColor="{StaticResource CustomPrimaryColor}" Command="{Binding MoveNextPageCommand}"/>
+        </Grid>
+    </Grid>
+</ContentPage>
+    

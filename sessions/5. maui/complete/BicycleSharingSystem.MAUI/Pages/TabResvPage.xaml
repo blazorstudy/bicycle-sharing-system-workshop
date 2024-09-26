@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:BicycleSharingSystem.MAUI.ViewModels"
+             x:Class="BicycleSharingSystem.MAUI.Pages.TabResvPage">
+    <ContentView.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+    </ContentView.Resources>
+        <Grid RowDefinitions="*,Auto">
+            <VerticalStackLayout IsVisible="{Binding IsItemEmpty}" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="아직 대여 중인 자전거가 없습니다" TextColor="White" Padding="20" FontSize="18"/>
+            </VerticalStackLayout>
+
+        <VerticalStackLayout IsVisible="{Binding IsItemEmpty, Converter={StaticResource InvertedBoolConverter}}" VerticalOptions="Center" HorizontalOptions="Center" Spacing="15">
+            <Label Text="{Binding CurrentOfficeData.Name}" TextColor="{StaticResource Gray400}" HorizontalOptions="Center" FontSize="16"/>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="대여시간"  TextColor="{StaticResource CustomPrimaryColor}" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding CurrentBycleData.StartRentalTime, StringFormat='{0:yyyy/MM/dd hh:mm:ss}'}"  TextColor="White" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="반납시간"  TextColor="{StaticResource CustomPrimaryColor}" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding CurrentBycleData.ExpireRentalTime, StringFormat='{0:yyyy/MM/dd hh:mm:ss}'}"  TextColor="White" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Button Text="반납하기" Margin="20" Padding="30,20" BackgroundColor="{StaticResource CustomPrimaryColor}" TextColor="White" Command="{Binding ReturnBicycleCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentView>

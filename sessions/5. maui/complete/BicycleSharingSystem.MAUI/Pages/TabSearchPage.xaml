@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:vm="clr-namespace:BicycleSharingSystem.MAUI.ViewModels"
+             xmlns:model="clr-namespace:BicycleSharingSystem.MAUI.Models"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:converter="clr-namespace:BicycleSharingSystem.MAUI.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BicycleSharingSystem.MAUI.Pages.TabSearchPage" x:Name="root">
+    <ContentView.BindingContext>
+        <vm:TabSearchPageViewModel/>
+    </ContentView.BindingContext>
+    
+    <ContentView.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        <converter:SelectItemBorderColorConverter x:Key="SelectItemBorderColorConverter"/>
+    </ContentView.Resources>
+    <Grid>
+        <maps:Map x:Name="map" IsTrafficEnabled="True" IsShowingUser="False" IsZoomEnabled="False" MapType="Street" ItemsSource="{Binding RentalOffices}"/>
+
+        <VerticalStackLayout  VerticalOptions="End" Padding="20,30" Spacing="10" x:Name="vStack">
+            <CollectionView ItemsSource="{Binding RentalOffices}" SelectionChangedCommand="{Binding SelectedBikeChangeCommand}" SelectionMode="Single" SelectedItem="{Binding CurrentOfficeItem}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="10">
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HasShadow="False" BackgroundColor="White" CornerRadius="20">
+                            <Frame.BorderColor>
+                                <MultiBinding Converter="{StaticResource SelectItemBorderColorConverter}">
+                                    <Binding Path="." />
+                                    <!-- 현재 항목 -->
+                                    <Binding Path="BindingContext.CurrentOfficeItem" Source="{x:Reference vStack}" />
+                                    <!-- 선택된 항목 -->
+                                </MultiBinding>
+                            </Frame.BorderColor>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="20">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.SelectedBikeChangeCommand,Source={x:Reference vStack}}" CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
+                                <Image Source="https://cdn-icons-png.flaticon.com/512/3830/3830912.png" WidthRequest="64" HeightRequest="64"/>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="대여 불가" TextColor="{StaticResource CustomErorColor}" FontAttributes="Bold" VerticalOptions="End" IsVisible="{Binding IsAvailable, Converter={StaticResource InvertedBoolConverter}}"/>
+                                    <Label FontAttributes="Bold" VerticalOptions="End" IsVisible="{Binding IsAvailable}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding IsAvailableText}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding AvailableBicycles}"/>
+                                                <Span Text="/"/>
+                                                <Span Text="{Binding TotalBicycles}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding Name}"  TextColor="#958F8F" VerticalOptions="Start"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button BackgroundColor="{StaticResource CustomPrimaryColor}" HeightRequest="65" CornerRadius="20" Text="대여하기" Command="{Binding BindingContext.SelectItemMoveCommand,Source={x:Reference root}}"/>
+            <!--<Frame HasShadow="False" BackgroundColor="{StaticResource CustomPrimaryColor}" HeightRequest="65" CornerRadius="20" BorderColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BindingContext.SelectItemMoveCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label Text="대여하기" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"/>
+            </Frame>-->
+        </VerticalStackLayout>
+    </Grid>
+</ContentView>

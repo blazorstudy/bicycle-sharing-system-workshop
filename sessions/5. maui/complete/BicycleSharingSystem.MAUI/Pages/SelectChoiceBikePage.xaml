@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BicycleSharingSystem.MAUI.Pages.SelectChoiceBikePage"
+             xmlns:vm="clr-namespace:BicycleSharingSystem.MAUI.ViewModels"
+             xmlns:converter="clr-namespace:BicycleSharingSystem.MAUI.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"             
+             Shell.NavBarIsVisible="False" BackgroundColor="{StaticResource CustomAppBackgroundColor}">
+    <ContentPage.BindingContext>
+        <vm:SelectChoiceBikePageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        <converter:SelectItemBorderColorConverter x:Key="SelectItemBorderColorConverter"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="20"  x:Name="root">
+        <Label Text="자전거 선택" TextColor="White" FontAttributes="Bold" FontSize="20"/>       
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding CurrentOfficeItem.Bicycles}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="White" StrokeThickness="4" Padding="18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.SelectedBikeChangeCommand,Source={x:Reference root}}" CommandParameter="{Binding .}"/>
+                        </Border.GestureRecognizers>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <MultiBinding Converter="{StaticResource SelectItemBorderColorConverter}">
+                                <Binding Path="." />                                
+                                <Binding Path="BindingContext.SelectedBicycle" Source="{x:Reference root}" />
+                            </MultiBinding>
+                        </Border.Stroke>
+                         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="20" >
+                            
+                            <Image Source="https://cdn-icons-png.flaticon.com/512/3830/3830912.png" WidthRequest="48" HeightRequest="48"/>
+
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="대여 불가" TextColor="{StaticResource CustomErorColor}" FontSize="16" FontAttributes="Bold" VerticalOptions="End" IsVisible="{Binding IsRented}"/>
+                                <Label Text="{Binding Name}" FontSize="16" VerticalOptions="Center" IsVisible="{Binding IsRented, Converter={StaticResource InvertedBoolConverter}}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="20">
+            <Button Text="취소" Padding="20" BackgroundColor="{StaticResource Gray600}" Command="{Binding BackPageCommand}"/>
+            <Button Text="선택" Padding="20" Grid.Column="1" BackgroundColor="{StaticResource CustomPrimaryColor}" Command="{Binding MoveNextPageCommand}"/>
+        </Grid>
+    </Grid>
+    
+</ContentPage>
