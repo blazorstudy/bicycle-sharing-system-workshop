@@ -19,7 +19,21 @@ BicycleSharingSystem.Kiosk
 ![alt text](image-1.png)
 
 1. Components 폴더에 `Avalonia Template Control` 생성 TopBanner
-2. PreviewWith 설정하기
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+```
+```csharp
+// TopBanner.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Components
+```
+3. PreviewWith 설정하기
 ```xml
 <Design.PreviewWith>
     <Grid
@@ -30,11 +44,12 @@ BicycleSharingSystem.Kiosk
     </Grid>
 </Design.PreviewWith>
 ```
-3. 아이콘 사용을 위해 접두어를 추가합니다.
+
+4.  아이콘 사용을 위해 접두어를 추가합니다.
 ```xml
 xmlns:i="https://github.com/projektanker/icons.avalonia"
 ```
-4. 화면 태그들을 삽입합니다.
+5. 화면 태그들을 삽입합니다.
 ```xml
 <Setter Property="Template">
     <ControlTemplate>
@@ -60,7 +75,7 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
     </ControlTemplate>
 </Setter>
 ```
-5. `TextBlock`의 기본 스타일과 `TextBlock`의 슬라이딩 Style를 추가합니다.
+6. `TextBlock`의 기본 스타일과 `TextBlock`의 슬라이딩 Style를 추가합니다.
 ```xml
 <Grid.Styles>
     <Style Selector="TextBlock">
@@ -84,7 +99,7 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
     </Style>
 </Grid.Styles>
 ```
-6. Classes를 통한 Style 적용하기
+7. Classes를 통한 Style 적용하기
 ```xml
 <TextBlock Classes="Message" Text="BMW와 함께 하는 안전한 라이딩" />
 ```
@@ -93,7 +108,21 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
 ![](image-3.png)
 
 1. Components 폴더에 `Avalonia Template Control` 생성 NavigationBar
-2. PreviewWith 설정하기
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+```
+```csharp
+// NavigationBar.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Components
+```
+3. PreviewWith 설정하기
 ```xml
 <Design.PreviewWith>
     <Grid
@@ -104,11 +133,11 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
     </Grid>
 </Design.PreviewWith>
 ```
-3. 아이콘 사용을 위해 접두어를 추가합니다.
+4. 아이콘 사용을 위해 접두어를 추가합니다.
 ```xml
 xmlns:i="https://github.com/projektanker/icons.avalonia"
 ```
-4. 화면 태그들을 삽입합니다.
+5. 화면 태그들을 삽입합니다.
 ```xml
 <Setter Property="Template">
     <ControlTemplate>
@@ -137,7 +166,7 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
     </ControlTemplate>
 </Setter>
 ```
-5. Button Theme 만들기  (Style로도 가능하지만 다른방법 있다라는 걸 알려주기 위해서)
+6. Button Theme 만들기  (Style로도 가능하지만 다른방법 있다라는 걸 알려주기 위해서)
 ```xml
 <!-- ResourceDicionary로 생성 된 경우-->
 <ControlTheme x:Key="NaviItem" TargetType="Button">
@@ -185,7 +214,7 @@ xmlns:i="https://github.com/projektanker/icons.avalonia"
     </ControlTheme>
 </Styles.Resources>
 ```
-6. 테마 적용해보기
+7. 테마 적용해보기
 ```xml
 Theme="{StaticResource NaviItem}" 
 ```
@@ -207,7 +236,7 @@ Theme="{StaticResource NaviItem}"
     Tag="mdi-wrench"
     Theme="{StaticResource NaviItem}" />
 ```
-7. Command Binding 적용해놓기
+8. Command Binding 적용해놓기
 ```xml
 Command="{Binding HomeButtonCommand}"
 .
@@ -226,7 +255,7 @@ Command="{Binding RentalOfficeButtonCommand}"
     Tag="mdi-bike"
     Theme="{StaticResource NaviItem}" />
 ```
-8. 마우스 올렸을 때 색상 변하게 하기
+9. 마우스 올렸을 때 색상 변하게 하기
 ```xml
 <Style Selector="^ /template/ Button:pointerover">
     <Setter Property="Background" Value="#e6e6e6" />
@@ -237,7 +266,21 @@ Command="{Binding RentalOfficeButtonCommand}"
 ![](image-2.png)
 
 1. Components 폴더에 `Avalonia Template Control` 생성 BottomBanner
-2. PreviewWith 설정하기
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Components"
+```
+```csharp
+// BottomBanner.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Components
+```
+3. PreviewWith 설정하기
 ```xml
 <Design.PreviewWith>
     <Grid
@@ -248,7 +291,7 @@ Command="{Binding RentalOfficeButtonCommand}"
     </Grid>
 </Design.PreviewWith>
 ```
-3. xaml에서 현재 시간을 임의로 저장하기 위해 sys 접두어를 추가해줍니다.
+4. xaml에서 현재 시간을 임의로 저장하기 위해 sys 접두어를 추가해줍니다.
 ```xml
 xmlns:sys="clr-namespace:System;assembly=System.Runtime"
 ```
@@ -271,8 +314,22 @@ xmlns:sys="clr-namespace:System;assembly=System.Runtime"
 ## 대여소 컨트롤
 ![alt text](image-4.png)
 
-1. Pages/RentalOffice//Components 폴더에 `Avalonia Template Control` 생성 RentalOfficeItem
-2. PreviewWith 설정하기
+1. Pages/RentalOffice/Components 폴더에 `Avalonia Template Control` 생성 RentalOfficeItem
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
+```
+```csharp
+// RentalOfficeItem.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components
+```
+3. PreviewWith 설정하기
 ```xml
 <Design.PreviewWith>
     <Border Background="#F9F9F9" Padding="30">
@@ -280,7 +337,7 @@ xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     </Border>
 </Design.PreviewWith>
 ```
-3. 화면 태그들을 삽입합니다.
+4. 화면 태그들을 삽입합니다.
 ```xml
  <Setter Property="Template">
     <ControlTemplate>
@@ -301,7 +358,7 @@ xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     </ControlTemplate>
 </Setter>
 ```
-4. Click 시 Button Command 를 발생시키기 위해 다음과 같이 수정합니다.
+5. Click 시 Button Command 를 발생시키기 위해 다음과 같이 수정합니다.
 ```csharp
 // RentalOfficeItem.xaml.cs
 public static readonly AvaloniaProperty CommandProperty =
@@ -313,13 +370,12 @@ public ICommand? Command
     set => SetValue(CommandProperty, value);
 }
 
-    public RentalOfficeItem()
-    {
+public RentalOfficeItem()
+{
     this.Tapped += (s, e) =>
-        {
-        this.Command?.Execute(this.DataContext);
-        };
-    }
+    {
+    this.Command?.Execute(this.DataContext);
+    };
 }
 ```
 5. Command와 ViewModel의 커맨드를 미리 설정 해놓습니다.
@@ -331,7 +387,21 @@ public ICommand? Command
 ![alt text](image-5.png) ![alt text](image-6.png)
 
 1. Pages/Bicycle/Components 폴더에 `Avalonia Template Control` 생성 BicycleItem
-2. PreviewWith 설정하기
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
+```
+```csharp
+// BicycleItem.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Pages.Bicycle.Components
+```
+3. PreviewWith 설정하기
 ```xml
 <Design.PreviewWith>
     <Border Background="White" Padding="100">
@@ -340,7 +410,7 @@ public ICommand? Command
 </Design.PreviewWith>
 ```
 
-3. 화면 태그들을 삽입합니다.
+4. 화면 태그들을 삽입합니다.
 ```xml
  <Setter Property="Template">
     <ControlTemplate>
@@ -386,7 +456,21 @@ public ICommand? Command
  - 단순하게 ListBox를 통해 만들 수도 있지만 Item 선택 시 SelecteItem이 아닌 Command형태로 받기 위해 커스텀처리
   
 1. Pages/RentalOffice/Components 폴더에 `Avalonia Template Control` 생성 RentalOfficePanel
-2. 화면 태그들을 삽입합니다.
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
+```
+```csharp
+// RentalOfficePanel.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components
+```
+3. 화면 태그들을 삽입합니다.
 ```xml
 <Setter Property="ItemsPanel">
     <ItemsPanelTemplate>
@@ -400,7 +484,7 @@ public ICommand? Command
     </ControlTemplate>
 </Setter>
 ```
-3. RentalOfficeItem 컨트롤 형태로 자식 요소로 그리기 위해서 다음과 같이 처리해줍니다.
+4. RentalOfficeItem 컨트롤 형태로 자식 요소로 그리기 위해서 다음과 같이 처리해줍니다.
 ```csharp
 public class RentalOfficePanel : ListBox
 {
@@ -411,7 +495,7 @@ public class RentalOfficePanel : ListBox
 }
 ```
 
-4. Resourece 추가 후 PreviewWith 설정을합니다.
+5. Resourece 추가 후 PreviewWith 설정을합니다.
 ```xml
 <ResourceDictionary.MergedDictionaries>
     <!-- Rider의 경우-->
@@ -427,12 +511,26 @@ public class RentalOfficePanel : ListBox
     </controls:RentalOfficePanel>
 </Design.PreviewWith>
 
-5. RentalOfficeItem.axaml에 주석해놓은 것을 해제합니다.
 ```
+6. RentalOfficeItem.axaml에 주석해놓은 것을 해제합니다.
 
 ## BicycleItem의 Panel 만들기
 1. Pages/Bicycle/Components 폴더에 `Avalonia Template Control` 생성 BicyclePanel
-2. 화면 태그들을 삽입합니다.
+2. xmlns:controls 및 class 파일 수정 (VisualStudio일 경우에만 해당)
+```xml
+<!-- 
+VisualStudio에서 Avalonia Template Control 생성 시
+파일 루트 상관 없이 프로젝트명으로만 생성되기 때문에 수정이 필요합니다.
+
+xmlns:controls="using:BicycleSharingSystem.Kiosk" 
+-->
+xmlns:controls="using:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
+```
+```csharp
+// BicyclePanel.axaml.cs
+namespace BicycleSharingSystem.Kiosk.Pages.Bicycle.Components
+```
+3. 화면 태그들을 삽입합니다.
 ```xml
 <Setter Property="ItemsPanel">
     <ItemsPanelTemplate>
@@ -446,7 +544,7 @@ public class RentalOfficePanel : ListBox
     </ControlTemplate>
 </Setter>
 ```
-3. BicycleItem 컨트롤 형태로 자식 요소로 그리기 위해서 다음과 같이 처리해줍니다.
+1. BicycleItem 컨트롤 형태로 자식 요소로 그리기 위해서 다음과 같이 처리해줍니다.
 ```csharp
 public class BicyclePanel : ListBox
 {
@@ -456,7 +554,7 @@ public class BicyclePanel : ListBox
     }
 }
 ```
-4. Styles 추가 후 PreviewWith 설정을합니다.
+1. Styles 추가 후 PreviewWith 설정을합니다.
 ```xml
 <StyleInclude Source="BicycleItem.axaml" />
 <ResourceDictionary.MergedDictionaries>
@@ -482,23 +580,29 @@ public class BicyclePanel : ListBox
 # 화면 조합하기
 ## 자전거 화면 조합하기
 1. Pages/Bicycle/Index.xaml을 엽니다.
-2. Styles 또는 ResourceDictionary를 추가해줍니다.
+2. `component` 태그 사용을 위해 접두어 추가
+```
+xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.Bicycle.Components"
+```
+3. Styles 또는 ResourceDictionary를 추가해줍니다.
 ```xml
-<!--ResourceDictionary로 만들어진 경우-->
+<!--TemplatControl이 ResourceDictionary로 만들어진 경우-->
  <UserControl.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
+            <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/Bicycle/Components/BicyclePanel.axaml" />
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </UserControl.Resources>
 
 
-<!--Styles로 만들어진 경우-->
-<UserControl.Styles>
-</UserControl.Styles>
+<!--TemplatControl이 Styles로 만들어진 경우-->
+  <UserControl.Styles>
+        <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/Bicycle/Components/BicyclePanel.axaml" />
+    </UserControl.Styles>
 ```
 
-3. 화면 요소들을 삽입합니다.
+4. 화면 요소들을 삽입합니다.
 ```xml
 .
 .
@@ -516,22 +620,28 @@ public class BicyclePanel : ListBox
 ```
 ## 대여소 화면 조합하기
 1. Pages/RentalOffice/Index.xaml을 엽니다.
-2. Styles 또는 ResourceDictionary를 추가해줍니다.
+2. `component` 태그 사용을 위해 접두어 추가
+```
+xmlns:component="clr-namespace:BicycleSharingSystem.Kiosk.Pages.RentalOffice.Components"
+```
+3. Styles 또는 ResourceDictionary를 추가해줍니다.
 ```xml
-<!--ResourceDictionary로 만들어진 경우-->
+<!--TemplatControl이 ResourceDictionary로 만들어진 경우-->
  <UserControl.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
+            <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </UserControl.Resources>
 
 
-<!--Styles로 만들어진 경우-->
-<UserControl.Styles>
-</UserControl.Styles>
+<!--TemplatControl이 Styles로 만들어진 경우-->
+  <UserControl.Styles>
+        <StyleInclude Source="avares://BicycleSharingSystem.Kiosk/Pages/RentalOffice/Components/RentalOfficePanel.axaml" />
+    </UserControl.Styles>
 ```
-3. 화면 요소들을 삽입합니다.
+4. 화면 요소들을 삽입합니다.
 ```xml
 .
 .
@@ -551,7 +661,7 @@ public class BicyclePanel : ListBox
 ```
 ## 윈도우 화면 조합하기
 1. MainWindow.xaml를 엽니다.
-2. 윈도우의 사이즈를 설정해줍니다.
+2. 윈도우의 사이즈와 `component` 접두어 를 추가해줍니다.
 ```xml
 Height="960"
 MaxHeight="960"
@@ -561,6 +671,7 @@ MinWidth="540"
 Width="540"
 d:DesignHeight="960"
 d:DesignWidth="540"
+xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
 ```
 3. Styles 또는 ResourceDictionary 추가하기
 ```xml
@@ -573,13 +684,19 @@ xmlns:components="clr-namespace:BicycleSharingSystem.Kiosk.Components"
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                 <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/TopBanner.axaml" />
+                 <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/NavigationBar.axaml" />
+                 <ResourceInclude Source="avares://BicycleSharingSystem.Kiosk/Components/BottomBanner.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 --------------------------------------------------------------------------------------
    <!--Styles로 만들어진 경우-->
-   <Window.Styles>
-   </Window.Styles>
+    <Window.Styles>
+        <StyleInclude Source="Components/TopBanner.axaml" />
+        <StyleInclude Source="Components/NavigationBar.axaml" />
+        <StyleInclude Source="Components/BottomBanner.axaml" />
+    </Window.Styles>
 ```
 
 4. 화면 요소 추가
@@ -897,8 +1014,3 @@ public override void OnFrameworkInitializationCompleted()
     </TransitioningContentControl.PageTransition>
 </TransitioningContentControl>
 ```
-
-
-
-
-TODO : 
